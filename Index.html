@@ -4,12 +4,13 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Parcerias de Sucesso | Micro-SaaS para Manicures</title>
-<meta name="description" content="Micro-site para manicures prospectarem parceiros: guia de mercado, etiqueta, materiais, higiene/esterilização e ferramentas práticas — com indicações e doações para manter o projeto no ar." />
+<meta name="description" content="Ferramenta gratuita para manicures prospectarem parceiros: guia, etiqueta, materiais, higiene e ferramentas de prospecção — apoie via PIX ou compras por links de afiliado." />
 <style>
   :root{
     --bg:#fff7fb; --card:#ffffff; --ink:#2d2230; --muted:#6b5a6f;
     --primary:#d63384; --primary-2:#b83280; --purple:#6f42c1; --accent:#ff8fab;
     --success:#2fbf71; --warning:#f59e0b; --danger:#ef4444; --line:#eed8ea; --shadow:0 8px 24px rgba(214,51,132,.15); --radius:16px;
+    --pulse: rgba(214,51,132,.45);
   }
   *{box-sizing:border-box}
   html{scroll-behavior:smooth}
@@ -50,7 +51,6 @@
   .muted{color:var(--muted)}
   .checklist li{list-style:none; display:flex; gap:10px; align-items:flex-start; margin:8px 0}
   .check{color:var(--success)}
-  .warn{color:var(--warning)}
   .icon{width:22px; height:22px; display:grid; place-items:center; border-radius:8px; background:linear-gradient(135deg,#ffe5f3,#efe2ff); color:var(--primary); font-weight:800}
   .steps{counter-reset:step}
   .step{display:flex; gap:14px; align-items:flex-start}
@@ -75,19 +75,36 @@
   .small{font-size:12px}
   .code{font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; background:#fff; border:1px dashed var(--line); border-radius:12px; padding:10px; font-size:12px}
   .highlight{background:linear-gradient(120deg, #fff0f6 0%, #f3e8ff 100%); border-radius:8px; padding:2px 6px}
-  /* Modal Apoie */
+
+  /* Apoio chamativo e pulsos */
+  @keyframes pulseGlow {
+    0% { box-shadow:0 0 0 0 var(--pulse); }
+    70% { box-shadow:0 0 0 16px rgba(214,51,132,0); }
+    100% { box-shadow:0 0 0 0 rgba(214,51,132,0); }
+  }
+  .pulse{animation:pulseGlow 2.4s infinite}
+  .support-banner{
+    border:2px dashed var(--primary); background:linear-gradient(0deg,#fff, #fff0f6);
+    border-radius:14px; padding:12px; display:flex; align-items:center; gap:12px
+  }
+  .arrow-hint{display:inline-flex; gap:6px; align-items:center; color:var(--primary)}
+  .arrow-hint span{animation:blink 1.2s infinite}
+  @keyframes blink {0%,100%{opacity:1}50%{opacity:.35}}
+
+  /* Modal Apoie simplificado */
   .modal{position:fixed; inset:0; background:rgba(0,0,0,.35); display:none; align-items:center; justify-content:center; z-index:40}
   .modal.active{display:flex}
-  .modal .box{background:#fff; border-radius:18px; box-shadow:var(--shadow); width:min(680px,92vw); padding:18px; border:1px solid var(--line)}
+  .modal .box{background:#fff; border-radius:18px; box-shadow:var(--shadow); width:min(560px,92vw); padding:18px; border:1px solid var(--line)}
   .modal .box h3{margin:0 0 6px}
   .close-x{background:#fff; border:1px solid var(--line); border-radius:10px; padding:6px 10px; cursor:pointer}
-  .donate-badges{display:flex; gap:10px; flex-wrap:wrap; margin:8px 0}
-  .donate-badge{display:inline-flex; align-items:center; gap:8px; background:#fff; border:1px solid var(--line); border-radius:999px; padding:6px 10px}
-  .qr{width:140px; height:140px; border:1px solid var(--line); border-radius:12px; background:#fff; display:grid; place-items:center; overflow:hidden}
+
+  /* Afiliados */
   .cta-aff{display:inline-flex; align-items:center; gap:8px; padding:10px 12px; border-radius:12px; background:linear-gradient(90deg,#ff88b0,#b47aff); color:#fff; box-shadow:var(--shadow)}
+  .cta-aff.pulse{animation:pulseGlow 2.4s infinite}
   .aff-flag{font-size:12px; color:#8a5a95}
-  .aff-card{display:grid; gap:8px; background:linear-gradient(135deg,#fff,#fff); border:1px solid var(--line); border-radius:16px; padding:16px; box-shadow:var(--shadow)}
+  .aff-card{display:grid; gap:8px; background:linear-gradient(135deg,#fff,#fff); border:2px solid #ffe6f2; border-radius:16px; padding:16px; box-shadow:var(--shadow); position:relative}
   .aff-hero{display:flex; align-items:center; justify-content:center; height:120px; border-radius:12px; background:linear-gradient(135deg,#ffe0ec,#efe2ff); font-size:40px}
+  .aff-card .arrows{position:absolute; right:10px; top:10px; color:var(--primary); font-size:18px}
 </style>
 </head>
 <body>
@@ -117,14 +134,14 @@
       <p class="lead">Use o radar, gere mensagens, organize contatos e feche acordos — simples e direto.</p>
       <div class="cta-row">
         <a class="btn btn-primary" href="#radar">Prospectar agora</a>
-        <button class="btn btn-ghost" onclick="openDonate()">Apoiar o projeto 💖</button>
+        <button class="btn btn-ghost" onclick="openDonate()">Doar via PIX 💖</button>
       </div>
     </div>
     <div class="illus" aria-hidden="true">
       <div class="row"><span class="icon">📍</span> Radar de parceiros por bairro</div>
       <div class="row"><span class="icon">📇</span> Mini CRM com status e follow-up</div>
       <div class="row"><span class="icon">🧼</span> Higiene e biossegurança descomplicadas</div>
-      <span class="pill">Comprar pelos nossos links ajuda a manter este site no ar</span>
+      <span class="pill">Ferramenta gratuita — seu apoio mantém o site no ar</span>
     </div>
   </div>
 </section>
@@ -458,44 +475,54 @@
   <div class="container">
     <div class="section-title">
       <h2>Apoie o Projeto e Indicações</h2>
-      <span class="kicker">Seu apoio mantém o site no ar</span>
+      <span class="kicker">É grátis para usar — sua ajuda mantém no ar</span>
     </div>
 
-    <div class="grid cols-2">
+    <div class="support-banner pulse">
+      <div class="arrow-hint">⬇️ <span>⬇️</span> ⬇️</div>
+      <div>
+        Se esta ferramenta gratuita te ajuda no dia a dia, ajude a manter ela no ar: compartilhe ou faça uma doação.
+        Parte da renda é doada a instituições de caridade.
+      </div>
+    </div>
+
+    <div class="grid cols-2" style="margin-top:16px">
       <div class="aff-card">
+        <div class="arrows">↘️</div>
         <div class="aff-hero">🎓</div>
         <div class="aff-flag">Afiliado • Conteúdo recomendado</div>
         <h3>Formação e técnicas para elevar seu atendimento</h3>
         <p class="muted">Aprenda com especialistas e acelere sua evolução. Comprando pelo link, você apoia este projeto.</p>
-        <a class="cta-aff" href="https://go.hotmart.com/F101670321U" target="_blank" rel="noopener sponsored nofollow">Quero conhecer agora ↗</a>
+        <a class="cta-aff pulse" href="https://go.hotmart.com/F101670321U" target="_blank" rel="noopener sponsored nofollow">Quero conhecer agora ↗</a>
         <p class="small">Transparência: link de afiliado. Sem custo extra para você.</p>
       </div>
 
       <div class="aff-card">
+        <div class="arrows">↙️</div>
         <div class="aff-hero">📦</div>
         <div class="aff-flag">Afiliado • Ferramentas úteis</div>
         <h3>Materiais, templates e atalhos para vender mais</h3>
         <p class="muted">Otimize tempo e divulgação com recursos prontos. Sua compra ajuda a manter esta página no ar.</p>
-        <a class="cta-aff" href="https://go.hotmart.com/S101670391G" target="_blank" rel="noopener sponsored nofollow">Ver recursos recomendados ↗</a>
+        <a class="cta-aff pulse" href="https://go.hotmart.com/S101670391G" target="_blank" rel="noopener sponsored nofollow">Ver recursos recomendados ↗</a>
         <p class="small">Obrigado por apoiar o projeto através das indicações.</p>
       </div>
     </div>
 
-    <div class="card" style="margin-top:16px">
+    <div class="card pulse" style="margin-top:16px">
+      <h3>Doe com PIX (rápido e seguro)</h3>
+      <p class="muted">É grátis para usar — sua doação mantém os servidores e melhorias no ar. Obrigado por apoiar!</p>
       <div class="grid cols-2">
         <div>
-          <h3>Doe e fortaleça a comunidade</h3>
-          <p class="muted">Se esta ferramenta te ajuda, considere uma doação. Cada contribuição ajuda a manter servidores, melhorias e conteúdo gratuito para manicures.</p>
-          <div class="donate-badges">
-            <button class="donate-badge" onclick="openDonate()">Doar via PIX 💖</button>
-            <button class="donate-badge" onclick="openDonate()">Configurar meus dados de doação ⚙️</button>
+          <label class="label">Chave PIX do projeto</label>
+          <div class="code" id="pix_text" style="font-size:14px">cortesmake001@gmail.com</div>
+          <div class="toolbar" style="margin-top:8px">
+            <button class="btn btn-primary" onclick="copyPix()">Copiar chave PIX</button>
+            <button class="btn btn-ghost" onclick="openDonate()">Ver QR Code</button>
           </div>
-          <p class="small">Preferiu comprar pelas indicações? Obrigado! Isso já mantém o projeto vivo.</p>
+          <p class="small">Se não puder doar agora, compartilhe este site com uma colega. Já ajuda muito!</p>
         </div>
         <div>
-          <div class="tip">
-            Dica: compartilhe este site com colegas. Quanto mais gente usando, mais recursos teremos para evoluir as ferramentas.
-          </div>
+          <div class="tip">“Se esta ferramenta gratuita te ajuda no dia a dia, ajude a manter ela no ar. Parte da renda é doada a instituições de caridade.”</div>
         </div>
       </div>
     </div>
@@ -532,7 +559,7 @@
 
 <div class="sticky-cta">
   <a href="#radar" class="btn btn-primary">Prospectar agora</a>
-  <button class="btn btn-ghost" onclick="openDonate()">Apoiar 💖</button>
+  <button class="btn btn-ghost" onclick="openDonate()">Doar via PIX 💖</button>
   <a href="#apoie" class="btn btn-ghost">Indicações ⭐</a>
 </div>
 
@@ -544,52 +571,37 @@
         <p class="small">Para manicures que querem crescer com ética, qualidade e parcerias duradouras.</p>
       </div>
       <div>
-        <p class="small">Links de afiliado: sua compra ajuda a manter o site no ar. Obrigado pelo apoio!</p>
+        <p class="small">Ferramenta gratuita mantida por doações e links de afiliado. Parte da renda é doada a instituições de caridade. Obrigado pelo apoio!</p>
       </div>
     </div>
   </div>
 </footer>
 
-<!-- Modal de Doação -->
-<div id="donateModal" class="modal" aria-hidden="true" role="dialog" aria-label="Apoie o Projeto">
+<!-- Modal PIX simples -->
+<div id="donateModal" class="modal" aria-hidden="true" role="dialog" aria-label="Doar via PIX">
   <div class="box">
     <div class="toolbar" style="justify-content:space-between">
-      <h3>Apoiar o Projeto</h3>
+      <h3>Doar via PIX</h3>
       <button class="close-x" onclick="closeDonate()">Fechar</button>
     </div>
-    <div class="grid cols-2">
-      <div>
-        <p class="muted">Doe via PIX. Insira sua chave (se você é a dona do site) ou copie a chave já configurada.</p>
-        <label class="label">Chave PIX do projeto</label>
-        <div class="toolbar">
-          <input id="pix_key" placeholder="exemplo@pix.com" />
-          <button class="btn btn-ghost" onclick="savePix()">Salvar</button>
-          <button class="btn btn-primary" onclick="copyPix()">Copiar chave</button>
-        </div>
-
-        <div style="margin-top:10px">
-          <label class="label">Link de doação online (opcional)</label>
-          <div class="toolbar">
-            <input id="donate_link" placeholder="Ex.: seu link de pagamento" />
-            <button class="btn btn-ghost" onclick="saveDonateLink()">Salvar</button>
-            <a id="open_donate_link" class="btn btn-primary" target="_blank" rel="noopener">Abrir link</a>
-          </div>
-          <p class="small">Sem custo extra para quem compra via indicações; isso também nos apoia.</p>
-        </div>
-      </div>
-      <div>
-        <label class="label">QR da chave PIX (para conferir)</label>
-        <div class="qr"><img id="qr_img" alt="QR PIX" /></div>
-        <div class="donate-badges" style="margin-top:10px">
-          <span class="donate-badge">Sugestões: R$ 10 • R$ 20 • R$ 50</span>
-        </div>
-        <p class="small">Após doar, compartilhe este site com uma colega. Você ajuda duas vezes!</p>
-      </div>
+    <p class="muted">Sua contribuição mantém este projeto gratuito no ar. Obrigado! Parte da renda é doada a instituições de caridade.</p>
+    <label class="label">Chave PIX</label>
+    <div class="code" id="pix_text_modal">cortesmake001@gmail.com</div>
+    <div class="toolbar" style="margin:10px 0">
+      <button class="btn btn-primary" onclick="copyPix()">Copiar chave PIX</button>
+    </div>
+    <label class="label">QR Code</label>
+    <div style="display:flex; gap:12px; align-items:center">
+      <img id="qr_img" alt="QR PIX" style="width:160px; height:160px; border:1px solid var(--line); border-radius:12px; background:#fff; padding:4px" />
+      <div class="tip">Abra seu app do banco, escolha “Pagar com QR Code” e aponte para o código.</div>
     </div>
   </div>
 </div>
 
 <script>
+  // Constantes
+  const PIX_KEY = 'cortesmake001@gmail.com';
+
   // Utilidades
   const $ = (id)=>document.getElementById(id);
   function copiar(id){
@@ -813,48 +825,27 @@ Quando podemos conversar?`;
     e.target.value='';
   });
 
-  // Modal de Doação (PIX e link)
+  // PIX modal simples
   function openDonate(){
-    const m = $('donateModal');
-    m.classList.add('active');
-    loadDonate();
+    $('donateModal').classList.add('active');
+    $('pix_text_modal').textContent = PIX_KEY;
+    updateQR(PIX_KEY);
   }
   function closeDonate(){ $('donateModal').classList.remove('active'); }
-  function savePix(){
-    const k = $('pix_key').value.trim();
-    if(!k){ alert('Informe a chave PIX.'); return; }
-    localStorage.setItem('donate_pix', k);
-    updateQR(k);
-    alert('Chave PIX salva.');
-  }
   function copyPix(){
-    const k = $('pix_key').value.trim();
-    if(!k){ alert('Nenhuma chave informada.'); return; }
-    navigator.clipboard.writeText(k).then(()=> alert('Chave PIX copiada!'));
-  }
-  function saveDonateLink(){
-    const l = $('donate_link').value.trim();
-    localStorage.setItem('donate_link', l);
-    $('open_donate_link').href = l || '#';
-    alert('Link de doação salvo.');
-  }
-  function loadDonate(){
-    const k = localStorage.getItem('donate_pix') || 'exemplo@pix.com';
-    $('pix_key').value = k;
-    updateQR(k);
-    const l = localStorage.getItem('donate_link') || '';
-    $('donate_link').value = l;
-    $('open_donate_link').href = l || '#';
+    navigator.clipboard.writeText(PIX_KEY).then(()=> alert('Chave PIX copiada!'));
   }
   function updateQR(k){
     const data = encodeURIComponent(k);
-    $('qr_img').src = `https://api.qrserver.com/v1/create-qr-code/?size=140x140&data=${data}`;
+    $('qr_img').src = `https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=${data}`;
   }
   // Fechar modal clicando fora
   $('donateModal').addEventListener('click', (e)=>{ if(e.target.id==='donateModal') closeDonate(); });
 
   // Inicialização
   function init(){
+    // Define PIX em áreas estáticas
+    const pixDiv = $('pix_text'); if(pixDiv) pixDiv.textContent = PIX_KEY;
     loadChecklist();
     carregarCRM();
     gerarPitch(); gerarMsg(); calcularComissao();
@@ -863,6 +854,3 @@ Quando podemos conversar?`;
 </script>
 </body>
 </html>
-
-
-google-site-verification=NwvfpayhI8_Xx_h6WlowxfPKJ-LRn90zN01ClutkJFI
