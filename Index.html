@@ -1,249 +1,899 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prospecta Manicure - Ferramenta de Prospecção</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-        .gradient-text {
-            background-image: linear-gradient(to right, #ec4899, #8b5cf6);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-        .hidden {
-            display: none;
-        }
-        .loader {
-            border: 4px solid #f3f3f3;
-            border-radius: 50%;
-            border-top: 4px solid #ec4899;
-            width: 40px;
-            height: 40px;
-            animation: spin 1s linear infinite;
-        }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-    </style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Parcerias de Sucesso | Micro-SaaS para Manicures</title>
+<meta name="description" content="Micro-site para manicures prospectarem parceiros na região: guia de mercado, etiqueta, materiais, higiene/esterilização e ferramentas práticas de prospecção." />
+<style>
+  :root{
+    --bg:#fff7fb;
+    --card:#ffffff;
+    --ink:#2d2230;
+    --muted:#6b5a6f;
+    --primary:#d63384;
+    --primary-2:#b83280;
+    --purple:#6f42c1;
+    --accent:#ff8fab;
+    --success:#2fbf71;
+    --warning:#f59e0b;
+    --danger:#ef4444;
+    --line:#eed8ea;
+    --shadow:0 8px 24px rgba(214,51,132,.15);
+    --radius:16px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0; font-family:-apple-system, Segoe UI, Roboto, Inter, Arial, "Helvetica Neue", sans-serif;
+    color:var(--ink); background:linear-gradient(180deg,var(--bg),#fff);
+  }
+  a{color:var(--primary); text-decoration:none}
+  a:hover{text-decoration:underline}
+  header.nav{
+    position:sticky; top:0; z-index:20; backdrop-filter:saturate(180%) blur(10px);
+    background:rgba(255,255,255,.85); border-bottom:1px solid var(--line);
+  }
+  .container{max-width:1100px; margin:0 auto; padding:0 20px}
+  .nav-inner{display:flex; align-items:center; justify-content:space-between; padding:12px 0}
+  .brand{display:flex; align-items:center; gap:10px; font-weight:800; color:var(--purple)}
+  .brand .logo{width:32px; height:32px; display:grid; place-items:center; border-radius:10px;
+    background:linear-gradient(135deg,var(--primary),var(--purple)); color:#fff; font-size:18px; box-shadow:var(--shadow)}
+  nav ul{display:flex; flex-wrap:wrap; gap:14px; list-style:none; margin:0; padding:0}
+  nav a{padding:8px 12px; border-radius:10px; color:var(--muted)}
+  nav a:hover{background:#fff; box-shadow:var(--shadow); color:var(--primary)}
+  .hero{
+    padding:60px 0 30px; background:
+      radial-gradient(1000px 300px at 80% -10%, rgba(214,51,132,.18), transparent 60%),
+      radial-gradient(900px 300px at 10% 0%, rgba(111,66,193,.18), transparent 60%);
+  }
+  .hero-grid{display:grid; grid-template-columns:1.2fr .8fr; gap:28px; align-items:center}
+  .badge{display:inline-flex; align-items:center; gap:8px; padding:6px 10px; border-radius:999px; background:#fff; border:1px solid var(--line); color:var(--primary); font-weight:700; box-shadow:var(--shadow)}
+  h1{font-size:clamp(28px,4vw,40px); margin:14px 0 8px}
+  .lead{color:var(--muted); font-size:18px}
+  .cta-row{display:flex; gap:12px; flex-wrap:wrap; margin-top:18px}
+  .btn{display:inline-flex; align-items:center; gap:10px; padding:12px 16px; border-radius:12px; border:1px solid transparent; cursor:pointer; font-weight:700}
+  .btn-primary{background:linear-gradient(90deg,var(--primary),var(--purple)); color:#fff; box-shadow:var(--shadow)}
+  .btn-ghost{background:#fff; border-color:var(--line); color:var(--primary)}
+  .illus{
+    background:#fff; border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow);
+    padding:20px; display:grid; gap:14px
+  }
+  .illus .row{display:flex; gap:10px; align-items:center}
+  .pill{padding:6px 10px; border-radius:999px; background:linear-gradient(90deg,#ffe0ec,#efe2ff); font-size:12px}
+  section{padding:34px 0}
+  .section-title{display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:16px}
+  h2{font-size:clamp(22px,3vw,28px); margin:0}
+  .kicker{color:var(--muted); font-size:14px}
+  .grid{display:grid; gap:18px}
+  .cols-3{grid-template-columns:repeat(3,1fr)}
+  .cols-2{grid-template-columns:repeat(2,1fr)}
+  @media(max-width:900px){.hero-grid,.cols-3,.cols-2{grid-template-columns:1fr}}
+  .card{
+    background:var(--card); border:1px solid var(--line); border-radius:var(--radius); padding:18px; box-shadow:var(--shadow)
+  }
+  .card h3{margin:0 0 8px; font-size:18px}
+  .muted{color:var(--muted)}
+  .checklist li{list-style:none; display:flex; gap:10px; align-items:flex-start; margin:8px 0}
+  .check{color:var(--success)}
+  .warn{color:var(--warning)}
+  .danger{color:var(--danger)}
+  .icon{width:22px; height:22px; display:grid; place-items:center; border-radius:8px; background:linear-gradient(135deg,#ffe5f3,#efe2ff); color:var(--primary); font-weight:800}
+  .steps{counter-reset:step}
+  .step{display:flex; gap:14px; align-items:flex-start}
+  .step + .step{margin-top:10px; padding-top:10px; border-top:1px dashed var(--line)}
+  .step .num{
+    counter-increment:step; width:28px; height:28px; border-radius:8px; background:linear-gradient(135deg,var(--primary),var(--purple)); color:#fff; display:grid; place-items:center;
+    font-weight:800; box-shadow:var(--shadow)
+  }
+  .tip{border-left:4px solid var(--primary); padding:10px 12px; background:#fff; border-radius:10px; border:1px solid var(--line)}
+  .subtle{font-size:13px; color:var(--muted)}
+  .label{display:inline-block; font-size:12px; color:var(--muted); margin-bottom:6px}
+  input, select, textarea{
+    width:100%; padding:10px 12px; border-radius:12px; border:1px solid var(--line); background:#fff; outline:none
+  }
+  textarea{min-height:110px; resize:vertical}
+  .toolbar{display:flex; gap:10px; flex-wrap:wrap}
+  .table{width:100%; border-collapse:collapse; font-size:14px}
+  .table th, .table td{border-bottom:1px solid var(--line); padding:10px; text-align:left; vertical-align:top}
+  .badge-mini{display:inline-flex; align-items:center; gap:6px; padding:4px 8px; border-radius:999px; background:#fff; border:1px solid var(--line); font-size:12px}
+  .status-Novo{background:#fff3f8}
+  .status-Contatado{background:#fff9eb}
+  .status-Reunião{background:#eef4ff}
+  .status-Em{background:#f0fff7}
+  .status-Ativo{background:#edfff2}
+  .status-Perdido{background:#fff0f0}
+  .footer{padding:30px 0; border-top:1px solid var(--line); color:var(--muted)}
+  .sticky-cta{
+    position:fixed; bottom:16px; right:16px; z-index:30; display:flex; flex-direction:column; gap:10px
+  }
+  .small{font-size:12px}
+  .code{font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; background:#fff; border:1px dashed var(--line); border-radius:12px; padding:10px; font-size:12px}
+  .highlight{background:linear-gradient(120deg, #fff0f6 0%, #f3e8ff 100%); border-radius:8px; padding:2px 6px}
+</style>
 </head>
-<body class="bg-gray-50">
+<body>
+<header class="nav">
+  <div class="container nav-inner">
+    <div class="brand"><div class="logo">💅</div> Parcerias de Sucesso</div>
+    <nav aria-label="Seções principais">
+      <ul>
+        <li><a href="#roteiro">Guia</a></li>
+        <li><a href="#etiqueta">Etiqueta</a></li>
+        <li><a href="#materiais">Materiais</a></li>
+        <li><a href="#higiene">Higiene</a></li>
+        <li><a href="#networking">Networking</a></li>
+        <li><a href="#radar">Radar</a></li>
+        <li><a href="#ferramentas">Ferramentas</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
 
-    <!-- Header -->
-    <header class="bg-white shadow-sm">
-        <nav class="container mx-auto px-6 py-4">
-            <h1 class="text-2xl font-bold gradient-text">Prospecta Manicure</h1>
-        </nav>
-    </header>
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <span class="badge">Novo • Micro-SaaS para Manicures</span>
+      <h1>Encontre e conquiste parceiros na sua região com confiança e profissionalismo</h1>
+      <p class="lead">Um micro-site prático para te guiar do primeiro contato ao contrato, com guias de mercado, etiqueta, higiene e ferramentas inteligentes para gerar mensagens, calcular comissões e organizar seus leads.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#radar">Começar agora</a>
+        <a class="btn btn-ghost" href="#ferramentas">Usar ferramentas</a>
+      </div>
+      <p class="subtle">Dica: salve esta página como atalho no seu celular para usar durante a prospecção.</p>
+    </div>
+    <div class="illus" aria-hidden="true">
+      <div class="row"><span class="icon">⭐</span> Pitch pronto em 1 minuto</div>
+      <div class="row"><span class="icon">📇</span> Mini CRM com status dos parceiros</div>
+      <div class="row"><span class="icon">🧼</span> Higiene e biossegurança sem mistério</div>
+      <div class="row"><span class="icon">📈</span> Calculadora de comissões</div>
+      <div class="row"><span class="icon">📍</span> Links de busca por bairro</div>
+      <span class="pill">Feito por especialistas para quem faz acontecer</span>
+    </div>
+  </div>
+</section>
 
-    <main class="container mx-auto px-6 py-12 md:py-16">
-        <div class="max-w-4xl mx-auto">
-            
-            <!-- Hero -->
-            <div class="text-center mb-12">
-                <h2 class="text-3xl md:text-5xl font-extrabold text-gray-800 mb-3">Chega de esperar pelas clientes.</h2>
-                <p class="text-lg text-gray-600">Use nossa ferramenta para encontrar parceiros no seu bairro e enviar uma mensagem profissional em segundos.</p>
-            </div>
-
-            <!-- Ferramenta Principal -->
-            <div class="bg-white p-8 rounded-2xl shadow-lg">
-
-                <!-- Passo 1: Inputs do Usuário -->
-                <div>
-                    <div class="flex items-center mb-4">
-                        <span class="flex items-center justify-center w-8 h-8 rounded-full bg-pink-500 text-white font-bold mr-3">1</span>
-                        <h3 class="text-xl font-bold text-gray-800">Preencha seus dados</h3>
-                    </div>
-                    <div class="grid md:grid-cols-2 gap-4 mb-8">
-                        <div>
-                            <label for="manicureName" class="block text-sm font-medium text-gray-700 mb-1">Seu Nome</label>
-                            <input type="text" id="manicureName" placeholder="Ex: Maria Silva" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-pink-500 focus:border-pink-500">
-                        </div>
-                        <div>
-                            <label for="manicureInsta" class="block text-sm font-medium text-gray-700 mb-1">Seu Instagram (para o portfólio)</label>
-                            <input type="text" id="manicureInsta" placeholder="@seu_instagram_de_unhas" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-pink-500 focus:border-pink-500">
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Passo 2: Buscar Parceiros -->
-                <div>
-                    <div class="flex items-center mb-4">
-                        <span class="flex items-center justify-center w-8 h-8 rounded-full bg-pink-500 text-white font-bold mr-3">2</span>
-                        <h3 class="text-xl font-bold text-gray-800">Encontre Parceiros Locais</h3>
-                    </div>
-                    <div class="grid md:grid-cols-2 gap-4 mb-4">
-                        <div>
-                            <label for="city" class="block text-sm font-medium text-gray-700 mb-1">Sua Cidade/Bairro</label>
-                            <input type="text" id="city" placeholder="Ex: Vila Madalena, São Paulo" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-pink-500 focus:border-pink-500">
-                        </div>
-                        <div>
-                            <label for="businessType" class="block text-sm font-medium text-gray-700 mb-1">Tipo de Estabelecimento</label>
-                            <select id="businessType" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-pink-500 focus:border-pink-500">
-                                <option value="Salão de Beleza">Salão de Beleza (sem manicure)</option>
-                                <option value="Loja de Roupas">Loja de Roupas</option>
-                                <option value="Academia">Academia</option>
-                                <option value="Estúdio de Estética">Estúdio de Estética</option>
-                            </select>
-                        </div>
-                    </div>
-                    <button id="findPartnersBtn" class="w-full bg-purple-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-purple-700 transition duration-300">
-                        Buscar Parceiros
-                    </button>
-                </div>
-            </div>
-
-            <!-- Resultados -->
-            <div id="resultsSection" class="hidden mt-10">
-                <div id="loader" class="loader mx-auto hidden"></div>
-                <h3 class="text-2xl font-bold text-center mb-6 text-gray-800">Parceiros em Potencial Encontrados:</h3>
-                <div id="resultsList" class="grid md:grid-cols-2 gap-6">
-                    <!-- Cards de resultados serão inseridos aqui -->
-                </div>
-            </div>
-
+<section id="roteiro">
+  <div class="container">
+    <div class="section-title">
+      <h2>Roteiro de Inserção no Mercado</h2>
+      <span class="kicker">Passo a passo prático para iniciar ou expandir</span>
+    </div>
+    <div class="grid cols-2">
+      <div class="card">
+        <h3>1) Fundamentos</h3>
+        <div class="steps">
+          <div class="step"><div class="num">1</div><div>
+            <strong>Defina seu nicho</strong><br>
+            <span class="muted">Ex.: esmaltação gel, alongamento, atendimento corporativo, noivas, nail art artística.</span>
+          </div></div>
+          <div class="step"><div class="num">2</div><div>
+            <strong>Formalização e finanças</strong><br>
+            <span class="muted">Considere MEI, emita recibos, separe contas, defina metas de faturamento e margem por serviço.</span>
+          </div></div>
+          <div class="step"><div class="num">3</div><div>
+            <strong>Portfólio e presença</strong><br>
+            <span class="muted">Fotos com boa luz, antes/depois, depoimentos. Perfil no Instagram/Google com destaque para parcerias.</span>
+          </div></div>
         </div>
-    </main>
+      </div>
+      <div class="card">
+        <h3>2) Oferta Profissional</h3>
+        <ul class="checklist">
+          <li><span class="check">✔</span> Tabela de preços clara e pacotes (ex.: mensalidades, combos).</li>
+          <li><span class="check">✔</span> Política de agendamento, atraso e cancelamento.</li>
+          <li><span class="check">✔</span> Diferenciais: <span class="highlight">atendimento in loco</span>, horários estendidos, garantia, kits esterilizados.</li>
+          <li><span class="check">✔</span> Materiais padronizados e checklists de processo.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>3) Aquisição e Parcerias</h3>
+        <p class="muted">Combine canais próprios (Instagram/indicações) com parcerias estratégicas.</p>
+        <ul class="checklist">
+          <li><span class="check">✔</span> Mapear parceiros locais (salões, academias, clínicas, coworkings, condomínios, empresas).</li>
+          <li><span class="check">✔</span> Proposta de valor com benefícios e comissão justa.</li>
+          <li><span class="check">✔</span> Piloto de 30 dias com metas e relatório simples.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>4) Operação e Crescimento</h3>
+        <ul class="checklist">
+          <li><span class="check">✔</span> Metas semanais (contatos, reuniões, testes, fechamentos).</li>
+          <li><span class="check">✔</span> Pós-venda: feedback, NPS, fotos autorizadas.</li>
+          <li><span class="check">✔</span> Escala: padronize scripts, materiais e kits de mídia.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="tip" style="margin-top:14px">
+      <strong>Mensagem motivacional:</strong> consistência vence. 5 contatos por dia por 10 dias valem mais que 50 em um único dia.
+    </div>
+  </div>
+</section>
 
-    <!-- Modal -->
-    <div id="messageModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-        <div class="bg-white rounded-2xl shadow-xl max-w-2xl w-full p-8 relative">
-            <button id="closeModal" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600">
-                <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
-            </button>
-            <h3 class="text-2xl font-bold mb-4 gradient-text">Sua Mensagem de Prospecção está Pronta!</h3>
-            <p class="text-gray-600 mb-4">Copie o texto abaixo e envie para <strong id="modalBusinessName" class="text-pink-600"></strong> via WhatsApp ou Instagram.</p>
-            <div class="bg-gray-100 p-4 rounded-lg text-gray-700">
-                <p id="generatedMessage"></p>
-            </div>
-            <button id="copyBtn" class="mt-6 w-full bg-pink-500 text-white font-bold py-3 px-6 rounded-lg hover:bg-pink-600 transition duration-300 flex items-center justify-center">
-                <svg class="h-5 w-5 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 7.5V6.108c0-1.135.845-2.098 1.976-2.192.373-.03.748-.03 1.125 0 1.131.094 1.976 1.057 1.976 2.192V7.5m-9 3c0 1.135.845 2.098 1.976 2.192.373.03.748.03 1.125 0 1.131.094 1.976 1.057 1.976 2.192V18A2.25 2.25 0 0112 20.25h-1.5a2.25 2.25 0 01-2.25-2.25V10.5z" /></svg>
-                <span id="copyBtnText">Copiar Mensagem</span>
-            </button>
+<section id="etiqueta">
+  <div class="container">
+    <div class="section-title">
+      <h2>Etiqueta Profissional para Manicures</h2>
+      <span class="kicker">Pequenas atitudes que geram grandes parcerias</span>
+    </div>
+    <div class="grid cols-3">
+      <div class="card">
+        <h3>Postura e Atendimento</h3>
+        <ul class="checklist">
+          <li><span class="check">✔</span> Pontualidade e confirmação prévia do horário.</li>
+          <li><span class="check">✔</span> Uniforme limpo, unhas próprias cuidadas, cabelo preso.</li>
+          <li><span class="check">✔</span> Comunicação gentil e objetiva; escute ativamente.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Profissionalismo</h3>
+        <ul class="checklist">
+          <li><span class="check">✔</span> Respeito à política do parceiro (uso de espaço, ruído, fotos).</li>
+          <li><span class="check">✔</span> Transparência em preços, comissões e metas.</li>
+          <li><span class="check">✔</span> Confidencialidade dos dados dos clientes.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Presença Digital</h3>
+        <ul class="checklist">
+          <li><span class="check">✔</span> Perfil atualizado com bio clara e link de agendamento.</li>
+          <li><span class="check">✔</span> Marque e valorize o parceiro em publicações.</li>
+          <li><span class="check">✔</span> Responda mensagens em até 24h.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="materiais">
+  <div class="container">
+    <div class="section-title">
+      <h2>Materiais Essenciais</h2>
+      <span class="kicker">Monte um kit enxuto e profissional</span>
+    </div>
+    <div class="grid cols-3">
+      <div class="card">
+        <h3>Ferramentas</h3>
+        <ul class="checklist">
+          <li><span class="check">✔</span> Alicates de cutícula e de corte (aço inox).</li>
+          <li><span class="check">✔</span> Espátulas/empurradores, pinças, tesourinhas.</li>
+          <li><span class="check">✔</span> Lixas e polidores (descartáveis), brocas e motor (se necessário).</li>
+          <li><span class="check">✔</span> Cabine LED/UV para gel, pincéis, dappen, removedores.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Produtos e EPIs</h3>
+        <ul class="checklist">
+          <li><span class="check">✔</span> Esmaltes, bases, top coats, primer, óleo de cutícula.</li>
+          <li><span class="check">✔</span> Luvas, máscara PFF2/KN95 (lixamento), óculos de proteção.</li>
+          <li><span class="check">✔</span> Toalhas/papéis descartáveis, gaze, lenços sem fiapos.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Higiene e Esterilização</h3>
+        <ul class="checklist">
+          <li><span class="check">✔</span> Detergente enzimático, escova de limpeza, álcool 70% para superfícies.</li>
+          <li><span class="check">✔</span> Autoclave e envelopes para esterilização; indicadores químicos.</li>
+          <li><span class="check">✔</span> Coletor de perfurocortantes e saco para resíduos contaminados.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="tip" style="margin-top:12px">
+      Organização móvel: maleta com divisórias, etiquetas por etapa (limpo, usado, esterilizar) e uma <em>checklist</em> de reabastecimento semanal.
+    </div>
+  </div>
+</section>
+
+<section id="higiene">
+  <div class="container">
+    <div class="section-title">
+      <h2>Higiene, Segurança e Esterilização</h2>
+      <span class="kicker">Proteja você, seus clientes e seus parceiros</span>
+    </div>
+    <div class="grid cols-2">
+      <div class="card">
+        <h3>Fluxo seguro em 6 etapas</h3>
+        <ol class="steps" style="padding-left:0; list-style:none">
+          <li class="step"><div class="num">1</div><div><strong>Pré-limpeza</strong> — Remova resíduos visíveis logo após o uso.</div></li>
+          <li class="step"><div class="num">2</div><div><strong>Limpeza</strong> — Lave com detergente enzimático e escova; enxágue e seque bem.</div></li>
+          <li class="step"><div class="num">3</div><div><strong>Inspeção</strong> — Verifique integridade das peças e funcionamento.</div></li>
+          <li class="step"><div class="num">4</div><div><strong>Embalagem</strong> — Envelopes próprios com indicador químico.</div></li>
+          <li class="step"><div class="num">5</div><div><strong>Esterilização</strong> — Autoclave conforme instruções do fabricante. Guarde fechado e datado.</div></li>
+          <li class="step"><div class="num">6</div><div><strong>Descarte</strong> — Perfurocortantes em coletor rígido; lixas e itens descartáveis no lixo apropriado.</div></li>
+        </ol>
+      </div>
+      <div class="card">
+        <h3>Boas práticas essenciais</h3>
+        <ul class="checklist">
+          <li><span class="check">✔</span> Higienize mãos antes/depois e troque luvas por cliente.</li>
+          <li><span class="check">✔</span> Superfícies: limpe com álcool 70% ou produto indicado entre atendimentos.</li>
+          <li><span class="check">✔</span> Evite procedimentos invasivos em pele lesionada. Identifique sinais de micoses e oriente a busca por avaliação médica.</li>
+          <li><span class="check">✔</span> Ventile o ambiente; utilize máscara com boa vedação ao lixar.</li>
+          <li><span class="check">✔</span> Registre lotes/validades e mantenha um caderno de controle da esterilização.</li>
+        </ul>
+        <p class="subtle">Siga as exigências sanitárias locais e as instruções dos fabricantes dos produtos e equipamentos.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="networking">
+  <div class="container">
+    <div class="section-title">
+      <h2>Networking e Busca de Parcerias</h2>
+      <span class="kicker">Do mapeamento ao fechamento com follow-up</span>
+    </div>
+    <div class="grid cols-2">
+      <div class="card">
+        <h3>Mapa de oportunidades</h3>
+        <ul class="checklist">
+          <li><span class="check">✔</span> Salões, barbearias, clínicas de estética, spas, academias, estúdios de pilates/yoga.</li>
+          <li><span class="check">✔</span> Coworkings, condomínios, empresas (RH), hotéis e eventos.</li>
+          <li><span class="check">✔</span> Influenciadoras locais, fotógrafos de noivas e assessorias de eventos.</li>
+        </ul>
+        <div class="tip"><strong>Proposta de valor:</strong> leve conforto e aumento de ticket para o parceiro com comissão clara (ex.: 10%–20%) e indicadores simples (nº de atendimentos, avaliações).</div>
+      </div>
+      <div class="card">
+        <h3>Cadência e fechamento</h3>
+        <ol class="steps" style="padding-left:0; list-style:none">
+          <li class="step"><div class="num">1</div><div>Contato inicial (DM/WhatsApp/ligação) com <span class="highlight">benefício em 1 frase</span>.</div></li>
+          <li class="step"><div class="num">2</div><div>Reunião rápida (15 min) para entender o público e propor piloto de 30 dias.</div></li>
+          <li class="step"><div class="num">3</div><div>Teste com metas e campanha conjunta (stories, cartaz, QR Code).</div></li>
+          <li class="step"><div class="num">4</div><div>Relatório e proposta final com ajustes; contrato simples com comissão.</div></li>
+        </ol>
+        <div class="tip">Regra de ouro: cada contato recebe 3 follow-ups espaçados (D+2, D+7, D+14). Depois, arquive e revisite em 60 dias.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="radar">
+  <div class="container">
+    <div class="section-title">
+      <h2>Radar de Parceiros na Sua Região</h2>
+      <span class="kicker">Gere buscas prontas no Google e Instagram</span>
+    </div>
+    <div class="card">
+      <div class="grid cols-3">
+        <div>
+          <label class="label" for="cidade">Cidade/Bairro</label>
+          <input id="cidade" placeholder="Ex.: Copacabana, Rio de Janeiro" />
         </div>
+        <div>
+          <label class="label" for="tipo">Tipo de parceiro</label>
+          <select id="tipo">
+            <option>salão de beleza</option>
+            <option>barbearia</option>
+            <option>clínica de estética</option>
+            <option>spa</option>
+            <option>academia</option>
+            <option>pilates</option>
+            <option>coworking</option>
+            <option>hotel</option>
+            <option>condomínio</option>
+            <option>empresa RH</option>
+          </select>
+        </div>
+        <div style="align-self:end">
+          <button class="btn btn-primary" onclick="gerarBuscas()">Gerar Buscas</button>
+        </div>
+      </div>
+      <div id="links-busca" style="margin-top:12px" class="toolbar"></div>
+      <p class="subtle">Dica: salve resultados promissores no Mini CRM abaixo. Visite o local em horários de menor movimento.</p>
+    </div>
+  </div>
+</section>
+
+<section id="ferramentas">
+  <div class="container">
+    <div class="section-title">
+      <h2>Ferramentas para Prospecção</h2>
+      <span class="kicker">Micro-SaaS: tudo o que você precisa em um lugar</span>
     </div>
 
-    <!-- Footer -->
-    <footer class="bg-white mt-16 py-6 border-t">
-        <div class="container mx-auto px-6 text-center text-gray-500">
-            <p>&copy; 2024 Prospecta Manicure. Uma ferramenta para impulsionar seu sucesso.</p>
+    <div class="grid cols-2">
+      <div class="card">
+        <h3>Gerador de Pitch/Proposta</h3>
+        <div class="grid cols-2">
+          <div>
+            <label class="label">Seu nome</label>
+            <input id="p_nome" placeholder="Seu nome" />
+          </div>
+          <div>
+            <label class="label">Especialidade</label>
+            <input id="p_esp" placeholder="Ex.: alongamento em gel" />
+          </div>
+          <div>
+            <label class="label">Benefício principal</label>
+            <input id="p_benef" placeholder="Ex.: aumento de ticket sem custo fixo" />
+          </div>
+          <div>
+            <label class="label">Comissão sugerida (%)</label>
+            <input id="p_comissao" type="number" min="0" max="50" step="1" placeholder="15" />
+          </div>
+          <div>
+            <label class="label">Cidade/Bairro</label>
+            <input id="p_cidade" placeholder="Bairro/Cidade" />
+          </div>
+          <div>
+            <label class="label">Duração do piloto (dias)</label>
+            <input id="p_piloto" type="number" min="7" max="60" step="1" value="30" />
+          </div>
         </div>
-    </footer>
+        <div class="toolbar" style="margin-top:10px">
+          <button class="btn btn-primary" onclick="gerarPitch()">Gerar pitch</button>
+          <button class="btn btn-ghost" onclick="copiar('pitch_out')">Copiar</button>
+          <button class="btn btn-ghost" onclick="baixarArquivo('pitch_out','pitch-parceria.txt')">Baixar .txt</button>
+        </div>
+        <pre id="pitch_out" class="code" style="margin-top:10px; white-space:pre-wrap"></pre>
+      </div>
 
-    <script>
-        // Dados Fictícios (Simulação de uma API)
-        const fakeBusinesses = [
-            { name: "Bella Boutique", type: "Loja de Roupas", city: "Vila Madalena, São Paulo" },
-            { name: "Corpo em Foco", type: "Academia", city: "Vila Madalena, São Paulo" },
-            { name: "Estética Pele de Seda", type: "Estúdio de Estética", city: "Vila Madalena, São Paulo" },
-            { name: "Salão Glamour", type: "Salão de Beleza", city: "Vila Madalena, São Paulo" },
-            { name: "Moda & Cia", type: "Loja de Roupas", city: "Copacabana, Rio de Janeiro" },
-            { name: "Maromba Fitness", type: "Academia", city: "Copacabana, Rio de Janeiro" },
-            { name: "Divas Hair", type: "Salão de Beleza", city: "Copacabana, Rio de Janeiro" },
-            { name: "Chic Store", type: "Loja de Roupas", city: "Savassi, Belo Horizonte" },
-            { name: "Studio Corpo Belo", type: "Estúdio de Estética", city: "Savassi, Belo Horizonte" }
-        ];
+      <div class="card">
+        <h3>Mensagem para WhatsApp/Email</h3>
+        <div class="grid cols-2">
+          <div>
+            <label class="label">Seu nome</label>
+            <input id="m_nome" placeholder="Seu nome" />
+          </div>
+          <div>
+            <label class="label">Tipo de parceiro</label>
+            <input id="m_tipo" placeholder="Ex.: academia, salão" />
+          </div>
+          <div>
+            <label class="label">Benefício direto</label>
+            <input id="m_benef" placeholder="Ex.: comissões e novos clientes" />
+          </div>
+          <div>
+            <label class="label">Telefone WhatsApp (opcional)</label>
+            <input id="m_fone" placeholder="DDD+Número, só dígitos" />
+          </div>
+          <div class="cols-2" style="grid-column:1/-1">
+            <label class="label">Cidade/Bairro</label>
+            <input id="m_cidade" placeholder="Bairro/Cidade" />
+          </div>
+        </div>
+        <div class="toolbar" style="margin-top:10px">
+          <button class="btn btn-primary" onclick="gerarMsg()">Gerar mensagem</button>
+          <button class="btn btn-ghost" onclick="copiar('msg_out')">Copiar</button>
+          <a id="wpp_link" class="btn btn-ghost" target="_blank" rel="noopener">Abrir no WhatsApp</a>
+        </div>
+        <pre id="msg_out" class="code" style="margin-top:10px; white-space:pre-wrap"></pre>
+      </div>
 
-        // Elementos do DOM
-        const findPartnersBtn = document.getElementById('findPartnersBtn');
-        const resultsSection = document.getElementById('resultsSection');
-        const resultsList = document.getElementById('resultsList');
-        const loader = document.getElementById('loader');
-        
-        const modal = document.getElementById('messageModal');
-        const closeModalBtn = document.getElementById('closeModal');
-        const copyBtn = document.getElementById('copyBtn');
-        const copyBtnText = document.getElementById('copyBtnText');
+      <div class="card">
+        <h3>Calculadora de Comissão</h3>
+        <div class="grid cols-3">
+          <div>
+            <label class="label">Ticket médio (R$)</label>
+            <input id="c_ticket" type="number" min="0" step="1" value="90" />
+          </div>
+          <div>
+            <label class="label">Atendimentos/mês</label>
+            <input id="c_qtd" type="number" min="0" step="1" value="40" />
+          </div>
+          <div>
+            <label class="label">Comissão ao parceiro (%)</label>
+            <input id="c_taxa" type="number" min="0" max="50" step="1" value="15" />
+          </div>
+        </div>
+        <div class="toolbar" style="margin-top:10px">
+          <button class="btn btn-primary" onclick="calcularComissao()">Calcular</button>
+        </div>
+        <div id="c_out" class="tip" style="margin-top:10px"></div>
+      </div>
 
-        findPartnersBtn.addEventListener('click', () => {
-            const city = document.getElementById('city').value.trim();
-            const businessType = document.getElementById('businessType').value;
-            const manicureName = document.getElementById('manicureName').value.trim();
+      <div class="card">
+        <h3>Checklist de Prontidão</h3>
+        <ul id="chklist" class="checklist">
+          <li><input type="checkbox" data-key="portfolio"> Portfólio com 12 fotos recentes e 3 depoimentos</li>
+          <li><input type="checkbox" data-key="politicas"> Políticas de agendamento e cancelamento publicadas</li>
+          <li><input type="checkbox" data-key="kits"> Kits esterilizados separados por cliente/serviço</li>
+          <li><input type="checkbox" data-key="pitch"> Pitch e oferta de comissão definidos</li>
+          <li><input type="checkbox" data-key="scripts"> Scripts prontos (DM, ligação, e-mail)</li>
+        </ul>
+        <div class="toolbar">
+          <button class="btn btn-ghost" onclick="resetChecklist()">Zerar checklist</button>
+        </div>
+      </div>
+    </div>
 
-            if (!city || !manicureName) {
-                alert('Por favor, preencha seu nome e sua cidade/bairro para começar.');
-                return;
-            }
+    <div class="card" style="margin-top:18px">
+      <h3>Mini CRM de Parceiros</h3>
+      <div class="grid cols-3">
+        <div>
+          <label class="label">Nome</label>
+          <input id="crm_nome" placeholder="Ex.: Academia FormaFit" />
+        </div>
+        <div>
+          <label class="label">Tipo</label>
+          <input id="crm_tipo" placeholder="Ex.: academia, salão" />
+        </div>
+        <div>
+          <label class="label">Contato (tel/email)</label>
+          <input id="crm_contato" placeholder="Ex.: (11) 99999-0000" />
+        </div>
+        <div>
+          <label class="label">Canal</label>
+          <select id="crm_canal">
+            <option>WhatsApp</option>
+            <option>Instagram</option>
+            <option>Ligação</option>
+            <option>E-mail</option>
+            <option>Visita</option>
+            <option>Indicação</option>
+          </select>
+        </div>
+        <div>
+          <label class="label">Status</label>
+          <select id="crm_status">
+            <option>Novo</option>
+            <option>Contatado</option>
+            <option>Reunião</option>
+            <option>Em teste</option>
+            <option>Ativo</option>
+            <option>Perdido</option>
+          </select>
+        </div>
+        <div>
+          <label class="label">Próximo passo</label>
+          <input id="crm_prox" placeholder="Ex.: enviar proposta" />
+        </div>
+        <div class="cols-2" style="grid-column:1/-1">
+          <label class="label">Observações</label>
+          <input id="crm_obs" placeholder="Ex.: prefere 4ª feira" />
+        </div>
+        <div style="align-self:end">
+          <button class="btn btn-primary" onclick="adicionarLead()">Adicionar</button>
+        </div>
+        <div style="align-self:end" class="toolbar">
+          <button class="btn btn-ghost" onclick="exportarCRM()">Exportar</button>
+          <label class="btn btn-ghost" style="cursor:pointer">
+            Importar <input type="file" id="crm_import" accept="application/json" style="display:none" />
+          </label>
+          <button class="btn btn-ghost" onclick="limparCRM()">Limpar</button>
+        </div>
+      </div>
 
-            resultsSection.classList.remove('hidden');
-            resultsList.innerHTML = '';
-            loader.classList.remove('hidden');
+      <div class="grid cols-3" style="margin-top:10px">
+        <div>
+          <label class="label">Filtro status</label>
+          <select id="flt_status" onchange="renderCRM()">
+            <option value="">Todos</option>
+            <option>Novo</option>
+            <option>Contatado</option>
+            <option>Reunião</option>
+            <option>Em teste</option>
+            <option>Ativo</option>
+            <option>Perdido</option>
+          </select>
+        </div>
+        <div>
+          <label class="label">Filtro tipo</label>
+          <input id="flt_tipo" placeholder="Ex.: academia" oninput="renderCRM()" />
+        </div>
+        <div>
+          <label class="label">Busca</label>
+          <input id="flt_q" placeholder="Nome/obs" oninput="renderCRM()" />
+        </div>
+      </div>
 
-            setTimeout(() => {
-                const foundBusinesses = fakeBusinesses.filter(b => 
-                    b.type === businessType && b.city.toLowerCase().includes(city.toLowerCase())
-                );
-                
-                loader.classList.add('hidden');
+      <div style="overflow:auto; margin-top:10px">
+        <table class="table" id="crm_tabela" aria-label="Tabela de parceiros"></table>
+      </div>
+      <p class="subtle">Dica: Atualize o status sempre após cada contato. Consistência fecha parcerias.</p>
+    </div>
+  </div>
+</section>
 
-                if (foundBusinesses.length > 0) {
-                    foundBusinesses.forEach(business => {
-                        const card = document.createElement('div');
-                        card.className = 'bg-white p-6 rounded-lg border border-gray-200 shadow-sm';
-                        card.innerHTML = `
-                            <h4 class="font-bold text-lg text-gray-800">${business.name}</h4>
-                            <p class="text-sm text-gray-500 mb-4">${business.type}</p>
-                            <button class="generate-msg-btn w-full bg-pink-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-pink-600 transition duration-300" data-name="${business.name}" data-type="${business.type}">Gerar Mensagem</button>
-                        `;
-                        resultsList.appendChild(card);
-                    });
-                } else {
-                    resultsList.innerHTML = `<p class="text-center text-gray-600 md:col-span-2">Nenhum parceiro encontrado com esses critérios. Tente um bairro ou cidade diferente. (Lembre-se que esta é uma demonstração)</p>`;
-                }
+<section id="exemplos">
+  <div class="container">
+    <div class="section-title">
+      <h2>Exemplos e Kits de Abordagem</h2>
+      <span class="kicker">Use, adapte e conquiste</span>
+    </div>
+    <div class="grid cols-3">
+      <div class="card">
+        <h3>DM (Instagram)</h3>
+        <div class="code">Olá, [nome do espaço]! Sou a [seu nome], manicure especializada em [especialidade] no [bairro]. Tenho uma proposta simples: levar mais conforto para seus clientes e aumentar o ticket do espaço, com comissão de [x%] e piloto de 30 dias. Podemos falar 15 min esta semana?</div>
+      </div>
+      <div class="card">
+        <h3>Ligação</h3>
+        <div class="code">Alô, tudo bem? Falo com quem cuida de parcerias? Sou [seu nome], manicure. Ajudo espaços como o de vocês a oferecer serviço de unhas sem custo fixo e com comissão. Posso enviar um resumo por WhatsApp e agendar 15 min ainda esta semana?</div>
+      </div>
+      <div class="card">
+        <h3>E-mail</h3>
+        <div class="code">Assunto: Parceria de manicure que aumenta o ticket do [nome do espaço]<br><br>Oi, [nome], tudo bem? Atendo [público] com [serviço]. Proponho um piloto de [30] dias com divulgação conjunta e comissão de [x%]. Envio portfólio e proposta em 1 página. Podemos alinhar em 15 min?</div>
+      </div>
+    </div>
+    <div class="tip" style="margin-top:12px">Oferta-piloto imbatível: 1º mês com agenda especial para clientes do parceiro, material de divulgação pronto (stories/cartaz) e relatório de atendimentos + avaliações.</div>
+  </div>
+</section>
 
-                document.querySelectorAll('.generate-msg-btn').forEach(button => {
-                    button.addEventListener('click', handleGenerateMessage);
-                });
+<section id="faq">
+  <div class="container">
+    <div class="section-title">
+      <h2>FAQ Rápido</h2>
+      <span class="kicker">Dúvidas comuns</span>
+    </div>
+    <div class="grid cols-2">
+      <div class="card">
+        <h3>Qual comissão sugerir?</h3>
+        <p class="muted">Geralmente entre 10% e 20% do serviço. Ajuste conforme estrutura oferecida (espaço, divulgação, agenda, recepção).</p>
+      </div>
+      <div class="card">
+        <h3>Como medir resultado?</h3>
+        <p class="muted">Atendimentos, faturamento, taxa de retorno, avaliações e presença digital (menções e cliques no link de agendamento).</p>
+      </div>
+      <div class="card">
+        <h3>Preciso de contrato?</h3>
+        <p class="muted">Um acordo simples com resumo da oferta, comissões, responsabilidades, duração do piloto e regras de rescisão evita ruídos.</p>
+      </div>
+      <div class="card">
+        <h3>E a biossegurança?</h3>
+        <p class="muted">Siga normas locais e as boas práticas deste guia. Documente seus processos e mantenha registros de esterilização.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-            }, 1500); // Simula o tempo de busca
-        });
+<div class="sticky-cta">
+  <a href="#radar" class="btn btn-primary">Prospectar agora</a>
+  <a href="#ferramentas" class="btn btn-ghost">Abrir ferramentas</a>
+</div>
 
-        function handleGenerateMessage(event) {
-            const businessName = event.target.dataset.name;
-            const businessType = event.target.dataset.type;
-            const manicureName = document.getElementById('manicureName').value.trim();
-            const manicureInsta = document.getElementById('manicureInsta').value.trim() || 'meu portfólio online';
+<footer class="footer">
+  <div class="container">
+    <div class="grid cols-2">
+      <div>
+        <div class="brand"><div class="logo">💅</div> Parcerias de Sucesso</div>
+        <p class="small">Feito para manicures que querem crescer com ética, qualidade e parcerias duradouras.</p>
+      </div>
+      <div>
+        <p class="small">Boas práticas de higiene são obrigatórias. Adeque-se à legislação sanitária da sua cidade e às instruções dos fabricantes.</p>
+      </div>
+    </div>
+  </div>
+</footer>
 
-            const message = `Olá, tudo bem? Meu nome é ${manicureName} e sou manicure profissional aqui na região de ${document.getElementById('city').value}.
+<script>
+  // Utilidades
+  const $ = (id)=>document.getElementById(id);
+  function copiar(id){
+    const el = $(id);
+    if(!el || !el.textContent) return;
+    navigator.clipboard.writeText(el.textContent).then(()=> {
+      alert('Copiado!');
+    });
+  }
+  function baixarArquivo(id, nome){
+    const el = $(id);
+    const blob = new Blob([el.textContent || ''], {type:'text/plain;charset=utf-8'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; a.download = nome; a.click();
+    URL.revokeObjectURL(url);
+  }
 
-Vi o trabalho de vocês no(a) ${businessName} e adorei! Acredito que temos um público em comum e que poderíamos criar uma parceria de sucesso.
+  // Radar de parceiros
+  function gerarBuscas(){
+    const cidade = $('cidade').value.trim();
+    const tipo = $('tipo').value.trim();
+    const box = $('links-busca');
+    box.innerHTML = '';
+    if(!cidade){ box.innerHTML = '<span class="muted">Informe sua cidade/bairro.</span>'; return; }
+    const q1 = encodeURIComponent(`${tipo} em ${cidade}`);
+    const q2 = encodeURIComponent(`${tipo} ${cidade} instagram`);
+    const q3 = encodeURIComponent(`${tipo} perto de ${cidade}`);
+    const links = [
+      {t:'Google Maps', url:`https://www.google.com/maps/search/${q1}`},
+      {t:'Google Busca', url:`https://www.google.com/search?q=${q3}`},
+      {t:'Instagram', url:`https://www.instagram.com/explore/tags/${encodeURIComponent(tipo.replace(/\s+/g,''))}/`},
+      {t:'Instagram busca', url:`https://www.instagram.com/search?q=${q2}`},
+      {t:'LinkedIn empresas', url:`https://www.linkedin.com/search/results/companies/?keywords=${q1}`},
+    ];
+    links.forEach(l=>{
+      const a = document.createElement('a');
+      a.href = l.url; a.target = '_blank'; a.rel='noopener';
+      a.className = 'badge-mini';
+      a.textContent = l.t + ' ↗';
+      box.appendChild(a);
+    });
+  }
 
-Pensei em oferecermos um voucher de desconto nos meus serviços para as clientes de vocês. Seria uma ótima forma de agregar valor ao atendimento que vocês já oferecem, sem custo algum.
+  // Gerador de Pitch
+  function gerarPitch(){
+    const nome = $('p_nome').value.trim() || 'Eu';
+    const esp = $('p_esp').value.trim() || 'manicure especializada';
+    const benef = $('p_benef').value.trim() || 'aumentar o ticket e encantar clientes';
+    const comi = $('p_comissao').value.trim() || '15';
+    const cidade = $('p_cidade').value.trim() || 'sua região';
+    const piloto = $('p_piloto').value.trim() || '30';
+    const texto = `Parceria que gera valor para o seu espaço
 
-O que acha da ideia? Você pode ver um pouco do meu trabalho no meu Instagram: ${manicureInsta}.
+Olá, sou ${nome}, ${esp}. Atendo em ${cidade} com foco em qualidade, segurança e experiência do cliente.
 
-Vamos conversar? Obrigada pela atenção!`;
+Proposta:
+• Levo atendimento de unhas ao seu espaço sem custo fixo.
+• Benefício direto: ${benef}.
+• Comissão sugerida: ${comi}% por atendimento.
+• Piloto de ${piloto} dias com metas simples e relatório de resultados.
+• Materiais esterilizados, EPIs e processos de biossegurança padronizados.
 
-            document.getElementById('modalBusinessName').textContent = businessName;
-            document.getElementById('generatedMessage').innerText = message;
-            modal.classList.remove('hidden');
-        }
+Como medimos:
+• Nº de atendimentos, ticket médio e avaliações dos clientes.
 
-        closeModalBtn.addEventListener('click', () => {
-            modal.classList.add('hidden');
-        });
-        
-        copyBtn.addEventListener('click', () => {
-            const messageText = document.getElementById('generatedMessage').innerText;
-            navigator.clipboard.writeText(messageText).then(() => {
-                copyBtnText.textContent = 'Copiado com Sucesso!';
-                setTimeout(() => {
-                    copyBtnText.textContent = 'Copiar Mensagem';
-                }, 2000);
-            }).catch(err => {
-                console.error('Erro ao copiar texto: ', err);
-                copyBtnText.textContent = 'Erro ao copiar';
-            });
-        });
+Próximos passos:
+1) Reunião de 15 min para alinharmos público e agenda.
+2) Início do piloto com divulgação conjunta (stories/cartaz/QR).
+3) Ajustes e formalização da parceria.
 
-    </script>
+Quando podemos conversar?`;
+    $('pitch_out').textContent = texto;
+  }
+
+  // Mensagem WhatsApp/Email
+  function gerarMsg(){
+    const n = $('m_nome').value.trim() || 'eu';
+    const tipo = $('m_tipo').value.trim() || 'seu espaço';
+    const benef = $('m_benef').value.trim() || 'comissão e mais conforto pros clientes';
+    const cidade = $('m_cidade').value.trim() || 'sua região';
+    const fone = $('m_fone').value.replace(/\D/g,'');
+    const msg = `Olá! Sou ${n}, manicure no ${cidade}. Tenho uma proposta rápida para ${tipo}: levar atendimento de unhas sem custo fixo, com ${benef}, começando com um piloto de 30 dias e metas simples. Topa um papo de 15 min esta semana?`;
+    $('msg_out').textContent = msg;
+    const wurl = `https://wa.me/${fone || ''}?text=${encodeURIComponent(msg)}`;
+    $('wpp_link').href = wurl;
+  }
+
+  // Calculadora de comissão
+  function moeda(n){ return n.toLocaleString('pt-BR',{minimumFractionDigits:2, maximumFractionDigits:2}); }
+  function calcularComissao(){
+    const ticket = parseFloat($('c_ticket').value)||0;
+    const qtd = parseInt($('c_qtd').value)||0;
+    const taxa = (parseFloat($('c_taxa').value)||0)/100;
+    const faturamento = ticket*qtd;
+    const comissao = faturamento*taxa;
+    const manicure = faturamento - comissao;
+    $('c_out').innerHTML = `
+      Faturamento estimado: <strong>R$ ${moeda(faturamento)}</strong><br>
+      Comissão do parceiro (${(taxa*100).toFixed(0)}%): <strong>R$ ${moeda(comissao)}</strong><br>
+      Receita da manicure: <strong>R$ ${moeda(manicure)}</strong><br>
+      <span class="subtle">Dica: negocie % por faixa de volume e revisão após o piloto.</span>
+    `;
+  }
+
+  // Checklist persistente
+  const chk = $('chklist');
+  function loadChecklist(){
+    const itens = chk.querySelectorAll('input[type="checkbox"]');
+    itens.forEach(i=>{
+      const k = 'chk_'+i.dataset.key;
+      i.checked = localStorage.getItem(k)==='1';
+      i.addEventListener('change',()=>localStorage.setItem(k, i.checked?'1':'0'));
+    });
+  }
+  function resetChecklist(){
+    const itens = chk.querySelectorAll('input[type="checkbox"]');
+    itens.forEach(i=>{
+      i.checked=false;
+      localStorage.removeItem('chk_'+i.dataset.key);
+    });
+  }
+
+  // Mini CRM com localStorage
+  let leads = [];
+  function salvarCRM(){ localStorage.setItem('crm_leads', JSON.stringify(leads)); }
+  function carregarCRM(){
+    try{
+      leads = JSON.parse(localStorage.getItem('crm_leads')||'[]');
+    }catch(e){ leads = []; }
+    renderCRM();
+  }
+  function adicionarLead(){
+    const nome = $('crm_nome').value.trim();
+    if(!nome){ alert('Informe um nome.'); return; }
+    const lead = {
+      id: Date.now(),
+      nome,
+      tipo: $('crm_tipo').value.trim(),
+      contato: $('crm_contato').value.trim(),
+      canal: $('crm_canal').value,
+      status: $('crm_status').value,
+      prox: $('crm_prox').value.trim(),
+      obs: $('crm_obs').value.trim(),
+      ultimo: new Date().toISOString().slice(0,10)
+    };
+    leads.unshift(lead);
+    salvarCRM(); renderCRM();
+    ['crm_nome','crm_tipo','crm_contato','crm_prox','crm_obs'].forEach(i=>$(i).value='');
+  }
+  function renderCRM(){
+    const t = $('crm_tabela');
+    const fs = $('flt_status').value;
+    const ft = $('flt_tipo').value.toLowerCase();
+    const fq = $('flt_q').value.toLowerCase();
+    let rows = `
+      <tr>
+        <th>Nome</th><th>Tipo</th><th>Contato</th><th>Canal</th><th>Status</th><th>Próx. passo</th><th>Último</th><th>Obs</th><th>Ações</th>
+      </tr>`;
+    leads.filter(l=>{
+      if(fs && l.status!==fs) return false;
+      if(ft && !(l.tipo||'').toLowerCase().includes(ft)) return false;
+      if(fq && !(`${l.nome} ${l.obs||''}`.toLowerCase().includes(fq))) return false;
+      return true;
+    }).forEach(l=>{
+      rows += `<tr>
+        <td>${escapeHtml(l.nome)}</td>
+        <td>${escapeHtml(l.tipo||'')}</td>
+        <td>${escapeHtml(l.contato||'')}</td>
+        <td>${escapeHtml(l.canal||'')}</td>
+        <td><span class="badge-mini ${('status-'+(l.status||'')).replace(' ','-')}">${escapeHtml(l.status||'')}</span></td>
+        <td>${escapeHtml(l.prox||'')}</td>
+        <td>${escapeHtml(l.ultimo||'')}</td>
+        <td>${escapeHtml(l.obs||'')}</td>
+        <td>
+          <button class="btn btn-ghost small" onclick="mudarStatus(${l.id})">Status</button>
+          <button class="btn btn-ghost small" onclick="registrarContato(${l.id})">Contato</button>
+          <button class="btn btn-ghost small" onclick="editarLead(${l.id})">Editar</button>
+          <button class="btn btn-ghost small" onclick="removerLead(${l.id})">Excluir</button>
+        </td>
+      </tr>`;
+    });
+    t.innerHTML = rows;
+  }
+  function escapeHtml(s){ return (s||'').replace(/[&<>"']/g, m=>({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[m])); }
+  function findLead(id){ return leads.find(l=>l.id===id); }
+  function mudarStatus(id){
+    const l = findLead(id); if(!l) return;
+    const novo = prompt('Novo status (Novo, Contatado, Reunião, Em teste, Ativo, Perdido):', l.status||'Novo');
+    if(novo){ l.status = novo; salvarCRM(); renderCRM(); }
+  }
+  function registrarContato(id){
+    const l = findLead(id); if(!l) return;
+    l.ultimo = new Date().toISOString().slice(0,10);
+    const prox = prompt('Atualize o próximo passo:', l.prox||'');
+    if(prox!==null) l.prox = prox;
+    salvarCRM(); renderCRM();
+  }
+  function editarLead(id){
+    const l = findLead(id); if(!l) return;
+    const nome = prompt('Nome:', l.nome); if(nome===null) return; l.nome = nome;
+    l.tipo = prompt('Tipo:', l.tipo||'') ?? l.tipo;
+    l.contato = prompt('Contato:', l.contato||'') ?? l.contato;
+    l.obs = prompt('Obs:', l.obs||'') ?? l.obs;
+    salvarCRM(); renderCRM();
+  }
+  function removerLead(id){
+    if(!confirm('Remover este registro?')) return;
+    leads = leads.filter(l=>l.id!==id); salvarCRM(); renderCRM();
+  }
+  function exportarCRM(){
+    const blob = new Blob([JSON.stringify(leads,null,2)], {type:'application/json'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a'); a.href=url; a.download='crm-parceiros.json'; a.click();
+    URL.revokeObjectURL(url);
+  }
+  function limparCRM(){
+    if(!confirm('Limpar todos os registros do CRM?')) return;
+    leads=[]; salvarCRM(); renderCRM();
+  }
+  $('crm_import').addEventListener('change', (e)=>{
+    const file = e.target.files[0]; if(!file) return;
+    const fr = new FileReader();
+    fr.onload = ()=> {
+      try{ const data = JSON.parse(fr.result); if(Array.isArray(data)){ leads=data; salvarCRM(); renderCRM(); } }
+      catch(err){ alert('Arquivo inválido.'); }
+    };
+    fr.readAsText(file);
+    e.target.value='';
+  });
+
+  // Inicialização
+  loadChecklist();
+  carregarCRM();
+  // Auto-gera placeholders iniciais
+  gerarPitch(); gerarMsg(); calcularComissao();
+
+</script>
 </body>
 </html>
