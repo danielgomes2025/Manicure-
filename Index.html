@@ -4,94 +4,61 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Parcerias de Sucesso | Micro-SaaS para Manicures</title>
-<meta name="description" content="Micro-site para manicures prospectarem parceiros na região: guia de mercado, etiqueta, materiais, higiene/esterilização e ferramentas práticas de prospecção." />
+<meta name="description" content="Micro-site para manicures prospectarem parceiros: guia de mercado, etiqueta, materiais, higiene/esterilização e ferramentas práticas — com indicações e doações para manter o projeto no ar." />
 <style>
   :root{
-    --bg:#fff7fb;
-    --card:#ffffff;
-    --ink:#2d2230;
-    --muted:#6b5a6f;
-    --primary:#d63384;
-    --primary-2:#b83280;
-    --purple:#6f42c1;
-    --accent:#ff8fab;
-    --success:#2fbf71;
-    --warning:#f59e0b;
-    --danger:#ef4444;
-    --line:#eed8ea;
-    --shadow:0 8px 24px rgba(214,51,132,.15);
-    --radius:16px;
+    --bg:#fff7fb; --card:#ffffff; --ink:#2d2230; --muted:#6b5a6f;
+    --primary:#d63384; --primary-2:#b83280; --purple:#6f42c1; --accent:#ff8fab;
+    --success:#2fbf71; --warning:#f59e0b; --danger:#ef4444; --line:#eed8ea; --shadow:0 8px 24px rgba(214,51,132,.15); --radius:16px;
   }
   *{box-sizing:border-box}
   html{scroll-behavior:smooth}
-  body{
-    margin:0; font-family:-apple-system, Segoe UI, Roboto, Inter, Arial, "Helvetica Neue", sans-serif;
-    color:var(--ink); background:linear-gradient(180deg,var(--bg),#fff);
-  }
+  body{margin:0; font-family:-apple-system, Segoe UI, Roboto, Inter, Arial, "Helvetica Neue", sans-serif; color:var(--ink); background:linear-gradient(180deg,var(--bg),#fff)}
   a{color:var(--primary); text-decoration:none}
   a:hover{text-decoration:underline}
-  header.nav{
-    position:sticky; top:0; z-index:20; backdrop-filter:saturate(180%) blur(10px);
-    background:rgba(255,255,255,.85); border-bottom:1px solid var(--line);
-  }
   .container{max-width:1100px; margin:0 auto; padding:0 20px}
+  header.nav{position:sticky; top:0; z-index:20; backdrop-filter:saturate(180%) blur(10px); background:rgba(255,255,255,.85); border-bottom:1px solid var(--line)}
   .nav-inner{display:flex; align-items:center; justify-content:space-between; padding:12px 0}
   .brand{display:flex; align-items:center; gap:10px; font-weight:800; color:var(--purple)}
-  .brand .logo{width:32px; height:32px; display:grid; place-items:center; border-radius:10px;
-    background:linear-gradient(135deg,var(--primary),var(--purple)); color:#fff; font-size:18px; box-shadow:var(--shadow)}
+  .brand .logo{width:32px; height:32px; display:grid; place-items:center; border-radius:10px; background:linear-gradient(135deg,var(--primary),var(--purple)); color:#fff; font-size:18px; box-shadow:var(--shadow)}
   nav ul{display:flex; flex-wrap:wrap; gap:14px; list-style:none; margin:0; padding:0}
   nav a{padding:8px 12px; border-radius:10px; color:var(--muted)}
   nav a:hover{background:#fff; box-shadow:var(--shadow); color:var(--primary)}
-  .hero{
-    padding:60px 0 30px; background:
-      radial-gradient(1000px 300px at 80% -10%, rgba(214,51,132,.18), transparent 60%),
-      radial-gradient(900px 300px at 10% 0%, rgba(111,66,193,.18), transparent 60%);
-  }
-  .hero-grid{display:grid; grid-template-columns:1.2fr .8fr; gap:28px; align-items:center}
+  .hero{padding:50px 0 26px; background:radial-gradient(1000px 300px at 80% -10%, rgba(214,51,132,.18), transparent 60%), radial-gradient(900px 300px at 10% 0%, rgba(111,66,193,.18), transparent 60%)}
+  .hero-grid{display:grid; grid-template-columns:1.2fr .8fr; gap:24px; align-items:center}
+  @media(max-width:900px){.hero-grid{grid-template-columns:1fr}}
   .badge{display:inline-flex; align-items:center; gap:8px; padding:6px 10px; border-radius:999px; background:#fff; border:1px solid var(--line); color:var(--primary); font-weight:700; box-shadow:var(--shadow)}
-  h1{font-size:clamp(28px,4vw,40px); margin:14px 0 8px}
-  .lead{color:var(--muted); font-size:18px}
-  .cta-row{display:flex; gap:12px; flex-wrap:wrap; margin-top:18px}
+  h1{font-size:clamp(28px,4vw,40px); margin:12px 0 8px}
+  .lead{color:var(--muted); font-size:17px; margin:0}
+  .cta-row{display:flex; gap:12px; flex-wrap:wrap; margin-top:14px}
   .btn{display:inline-flex; align-items:center; gap:10px; padding:12px 16px; border-radius:12px; border:1px solid transparent; cursor:pointer; font-weight:700}
   .btn-primary{background:linear-gradient(90deg,var(--primary),var(--purple)); color:#fff; box-shadow:var(--shadow)}
   .btn-ghost{background:#fff; border-color:var(--line); color:var(--primary)}
-  .illus{
-    background:#fff; border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow);
-    padding:20px; display:grid; gap:14px
-  }
+  .illus{background:#fff; border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow); padding:18px; display:grid; gap:12px}
   .illus .row{display:flex; gap:10px; align-items:center}
   .pill{padding:6px 10px; border-radius:999px; background:linear-gradient(90deg,#ffe0ec,#efe2ff); font-size:12px}
-  section{padding:34px 0}
-  .section-title{display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:16px}
+  section{padding:32px 0}
+  .section-title{display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:14px}
   h2{font-size:clamp(22px,3vw,28px); margin:0}
   .kicker{color:var(--muted); font-size:14px}
   .grid{display:grid; gap:18px}
   .cols-3{grid-template-columns:repeat(3,1fr)}
   .cols-2{grid-template-columns:repeat(2,1fr)}
-  @media(max-width:900px){.hero-grid,.cols-3,.cols-2{grid-template-columns:1fr}}
-  .card{
-    background:var(--card); border:1px solid var(--line); border-radius:var(--radius); padding:18px; box-shadow:var(--shadow)
-  }
+  @media(max-width:900px){.cols-3,.cols-2{grid-template-columns:1fr}}
+  .card{background:var(--card); border:1px solid var(--line); border-radius:var(--radius); padding:18px; box-shadow:var(--shadow)}
   .card h3{margin:0 0 8px; font-size:18px}
   .muted{color:var(--muted)}
   .checklist li{list-style:none; display:flex; gap:10px; align-items:flex-start; margin:8px 0}
   .check{color:var(--success)}
   .warn{color:var(--warning)}
-  .danger{color:var(--danger)}
   .icon{width:22px; height:22px; display:grid; place-items:center; border-radius:8px; background:linear-gradient(135deg,#ffe5f3,#efe2ff); color:var(--primary); font-weight:800}
   .steps{counter-reset:step}
   .step{display:flex; gap:14px; align-items:flex-start}
   .step + .step{margin-top:10px; padding-top:10px; border-top:1px dashed var(--line)}
-  .step .num{
-    counter-increment:step; width:28px; height:28px; border-radius:8px; background:linear-gradient(135deg,var(--primary),var(--purple)); color:#fff; display:grid; place-items:center;
-    font-weight:800; box-shadow:var(--shadow)
-  }
+  .step .num{counter-increment:step; width:28px; height:28px; border-radius:8px; background:linear-gradient(135deg,var(--primary),var(--purple)); color:#fff; display:grid; place-items:center; font-weight:800; box-shadow:var(--shadow)}
   .tip{border-left:4px solid var(--primary); padding:10px 12px; background:#fff; border-radius:10px; border:1px solid var(--line)}
-  .subtle{font-size:13px; color:var(--muted)}
   .label{display:inline-block; font-size:12px; color:var(--muted); margin-bottom:6px}
-  input, select, textarea{
-    width:100%; padding:10px 12px; border-radius:12px; border:1px solid var(--line); background:#fff; outline:none
-  }
+  input, select, textarea{width:100%; padding:10px 12px; border-radius:12px; border:1px solid var(--line); background:#fff; outline:none}
   textarea{min-height:110px; resize:vertical}
   .toolbar{display:flex; gap:10px; flex-wrap:wrap}
   .table{width:100%; border-collapse:collapse; font-size:14px}
@@ -103,13 +70,24 @@
   .status-Em{background:#f0fff7}
   .status-Ativo{background:#edfff2}
   .status-Perdido{background:#fff0f0}
-  .footer{padding:30px 0; border-top:1px solid var(--line); color:var(--muted)}
-  .sticky-cta{
-    position:fixed; bottom:16px; right:16px; z-index:30; display:flex; flex-direction:column; gap:10px
-  }
+  .footer{padding:28px 0; border-top:1px solid var(--line); color:var(--muted)}
+  .sticky-cta{position:fixed; bottom:16px; right:16px; z-index:30; display:flex; flex-direction:column; gap:10px}
   .small{font-size:12px}
   .code{font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; background:#fff; border:1px dashed var(--line); border-radius:12px; padding:10px; font-size:12px}
   .highlight{background:linear-gradient(120deg, #fff0f6 0%, #f3e8ff 100%); border-radius:8px; padding:2px 6px}
+  /* Modal Apoie */
+  .modal{position:fixed; inset:0; background:rgba(0,0,0,.35); display:none; align-items:center; justify-content:center; z-index:40}
+  .modal.active{display:flex}
+  .modal .box{background:#fff; border-radius:18px; box-shadow:var(--shadow); width:min(680px,92vw); padding:18px; border:1px solid var(--line)}
+  .modal .box h3{margin:0 0 6px}
+  .close-x{background:#fff; border:1px solid var(--line); border-radius:10px; padding:6px 10px; cursor:pointer}
+  .donate-badges{display:flex; gap:10px; flex-wrap:wrap; margin:8px 0}
+  .donate-badge{display:inline-flex; align-items:center; gap:8px; background:#fff; border:1px solid var(--line); border-radius:999px; padding:6px 10px}
+  .qr{width:140px; height:140px; border:1px solid var(--line); border-radius:12px; background:#fff; display:grid; place-items:center; overflow:hidden}
+  .cta-aff{display:inline-flex; align-items:center; gap:8px; padding:10px 12px; border-radius:12px; background:linear-gradient(90deg,#ff88b0,#b47aff); color:#fff; box-shadow:var(--shadow)}
+  .aff-flag{font-size:12px; color:#8a5a95}
+  .aff-card{display:grid; gap:8px; background:linear-gradient(135deg,#fff,#fff); border:1px solid var(--line); border-radius:16px; padding:16px; box-shadow:var(--shadow)}
+  .aff-hero{display:flex; align-items:center; justify-content:center; height:120px; border-radius:12px; background:linear-gradient(135deg,#ffe0ec,#efe2ff); font-size:40px}
 </style>
 </head>
 <body>
@@ -118,14 +96,14 @@
     <div class="brand"><div class="logo">💅</div> Parcerias de Sucesso</div>
     <nav aria-label="Seções principais">
       <ul>
+        <li><a href="#radar">Começar</a></li>
         <li><a href="#roteiro">Guia</a></li>
         <li><a href="#etiqueta">Etiqueta</a></li>
         <li><a href="#materiais">Materiais</a></li>
         <li><a href="#higiene">Higiene</a></li>
         <li><a href="#networking">Networking</a></li>
-        <li><a href="#radar">Radar</a></li>
+        <li><a href="#apoie">Apoiar</a></li>
         <li><a href="#ferramentas">Ferramentas</a></li>
-        <li><a href="#faq">FAQ</a></li>
       </ul>
     </nav>
   </div>
@@ -134,22 +112,19 @@
 <section class="hero">
   <div class="container hero-grid">
     <div>
-      <span class="badge">Novo • Micro-SaaS para Manicures</span>
-      <h1>Encontre e conquiste parceiros na sua região com confiança e profissionalismo</h1>
-      <p class="lead">Um micro-site prático para te guiar do primeiro contato ao contrato, com guias de mercado, etiqueta, higiene e ferramentas inteligentes para gerar mensagens, calcular comissões e organizar seus leads.</p>
+      <span class="badge">Micro-SaaS para Manicures</span>
+      <h1>Conquiste parcerias perto de você com organização e confiança</h1>
+      <p class="lead">Use o radar, gere mensagens, organize contatos e feche acordos — simples e direto.</p>
       <div class="cta-row">
-        <a class="btn btn-primary" href="#radar">Começar agora</a>
-        <a class="btn btn-ghost" href="#ferramentas">Usar ferramentas</a>
+        <a class="btn btn-primary" href="#radar">Prospectar agora</a>
+        <button class="btn btn-ghost" onclick="openDonate()">Apoiar o projeto 💖</button>
       </div>
-      <p class="subtle">Dica: salve esta página como atalho no seu celular para usar durante a prospecção.</p>
     </div>
     <div class="illus" aria-hidden="true">
-      <div class="row"><span class="icon">⭐</span> Pitch pronto em 1 minuto</div>
-      <div class="row"><span class="icon">📇</span> Mini CRM com status dos parceiros</div>
-      <div class="row"><span class="icon">🧼</span> Higiene e biossegurança sem mistério</div>
-      <div class="row"><span class="icon">📈</span> Calculadora de comissões</div>
-      <div class="row"><span class="icon">📍</span> Links de busca por bairro</div>
-      <span class="pill">Feito por especialistas para quem faz acontecer</span>
+      <div class="row"><span class="icon">📍</span> Radar de parceiros por bairro</div>
+      <div class="row"><span class="icon">📇</span> Mini CRM com status e follow-up</div>
+      <div class="row"><span class="icon">🧼</span> Higiene e biossegurança descomplicadas</div>
+      <span class="pill">Comprar pelos nossos links ajuda a manter este site no ar</span>
     </div>
   </div>
 </section>
@@ -158,88 +133,74 @@
   <div class="container">
     <div class="section-title">
       <h2>Roteiro de Inserção no Mercado</h2>
-      <span class="kicker">Passo a passo prático para iniciar ou expandir</span>
+      <span class="kicker">Passos práticos para iniciar ou escalar</span>
     </div>
     <div class="grid cols-2">
       <div class="card">
         <h3>1) Fundamentos</h3>
         <div class="steps">
-          <div class="step"><div class="num">1</div><div>
-            <strong>Defina seu nicho</strong><br>
-            <span class="muted">Ex.: esmaltação gel, alongamento, atendimento corporativo, noivas, nail art artística.</span>
-          </div></div>
-          <div class="step"><div class="num">2</div><div>
-            <strong>Formalização e finanças</strong><br>
-            <span class="muted">Considere MEI, emita recibos, separe contas, defina metas de faturamento e margem por serviço.</span>
-          </div></div>
-          <div class="step"><div class="num">3</div><div>
-            <strong>Portfólio e presença</strong><br>
-            <span class="muted">Fotos com boa luz, antes/depois, depoimentos. Perfil no Instagram/Google com destaque para parcerias.</span>
-          </div></div>
+          <div class="step"><div class="num">1</div><div><strong>Nicho</strong> — gel/alongamento, noivas, corporativo, nail art.</div></div>
+          <div class="step"><div class="num">2</div><div><strong>Formalize e precifique</strong> — MEI, recibos, metas e margem.</div></div>
+          <div class="step"><div class="num">3</div><div><strong>Portfólio</strong> — fotos com boa luz + depoimentos.</div></div>
         </div>
       </div>
       <div class="card">
         <h3>2) Oferta Profissional</h3>
         <ul class="checklist">
-          <li><span class="check">✔</span> Tabela de preços clara e pacotes (ex.: mensalidades, combos).</li>
-          <li><span class="check">✔</span> Política de agendamento, atraso e cancelamento.</li>
-          <li><span class="check">✔</span> Diferenciais: <span class="highlight">atendimento in loco</span>, horários estendidos, garantia, kits esterilizados.</li>
-          <li><span class="check">✔</span> Materiais padronizados e checklists de processo.</li>
+          <li><span class="check">✔</span> Tabela de preços + combos.</li>
+          <li><span class="check">✔</span> Políticas de agendamento e atraso.</li>
+          <li><span class="check">✔</span> Diferenciais: <span class="highlight">in loco</span>, horários estendidos, kits esterilizados.</li>
         </ul>
       </div>
       <div class="card">
-        <h3>3) Aquisição e Parcerias</h3>
-        <p class="muted">Combine canais próprios (Instagram/indicações) com parcerias estratégicas.</p>
+        <h3>3) Parcerias</h3>
         <ul class="checklist">
-          <li><span class="check">✔</span> Mapear parceiros locais (salões, academias, clínicas, coworkings, condomínios, empresas).</li>
-          <li><span class="check">✔</span> Proposta de valor com benefícios e comissão justa.</li>
+          <li><span class="check">✔</span> Mapear salões, academias, clínicas, coworkings, hotéis.</li>
+          <li><span class="check">✔</span> Proposta com benefício e comissão justa (10–20%).</li>
           <li><span class="check">✔</span> Piloto de 30 dias com metas e relatório simples.</li>
         </ul>
       </div>
       <div class="card">
-        <h3>4) Operação e Crescimento</h3>
+        <h3>4) Crescimento</h3>
         <ul class="checklist">
-          <li><span class="check">✔</span> Metas semanais (contatos, reuniões, testes, fechamentos).</li>
-          <li><span class="check">✔</span> Pós-venda: feedback, NPS, fotos autorizadas.</li>
-          <li><span class="check">✔</span> Escala: padronize scripts, materiais e kits de mídia.</li>
+          <li><span class="check">✔</span> Metas semanais de contato e follow-up.</li>
+          <li><span class="check">✔</span> Pós-venda com feedback e avaliações.</li>
+          <li><span class="check">✔</span> Padronize scripts e materiais.</li>
         </ul>
       </div>
     </div>
-    <div class="tip" style="margin-top:14px">
-      <strong>Mensagem motivacional:</strong> consistência vence. 5 contatos por dia por 10 dias valem mais que 50 em um único dia.
-    </div>
+    <div class="tip" style="margin-top:12px"><strong>Constância fecha portas.</strong> 5 contatos/dia por 10 dias vencem 50 em um só.</div>
   </div>
 </section>
 
 <section id="etiqueta">
   <div class="container">
     <div class="section-title">
-      <h2>Etiqueta Profissional para Manicures</h2>
-      <span class="kicker">Pequenas atitudes que geram grandes parcerias</span>
+      <h2>Etiqueta Profissional</h2>
+      <span class="kicker">Pequenas atitudes, grandes resultados</span>
     </div>
     <div class="grid cols-3">
       <div class="card">
-        <h3>Postura e Atendimento</h3>
+        <h3>Postura</h3>
         <ul class="checklist">
-          <li><span class="check">✔</span> Pontualidade e confirmação prévia do horário.</li>
-          <li><span class="check">✔</span> Uniforme limpo, unhas próprias cuidadas, cabelo preso.</li>
-          <li><span class="check">✔</span> Comunicação gentil e objetiva; escute ativamente.</li>
+          <li><span class="check">✔</span> Pontualidade e confirmação prévia.</li>
+          <li><span class="check">✔</span> Uniforme limpo; cabelo preso.</li>
+          <li><span class="check">✔</span> Comunicação gentil e objetiva.</li>
         </ul>
       </div>
       <div class="card">
         <h3>Profissionalismo</h3>
         <ul class="checklist">
-          <li><span class="check">✔</span> Respeito à política do parceiro (uso de espaço, ruído, fotos).</li>
-          <li><span class="check">✔</span> Transparência em preços, comissões e metas.</li>
-          <li><span class="check">✔</span> Confidencialidade dos dados dos clientes.</li>
+          <li><span class="check">✔</span> Respeite regras do parceiro.</li>
+          <li><span class="check">✔</span> Transparência em preços e comissões.</li>
+          <li><span class="check">✔</span> Proteja dados dos clientes.</li>
         </ul>
       </div>
       <div class="card">
-        <h3>Presença Digital</h3>
+        <h3>Digital</h3>
         <ul class="checklist">
-          <li><span class="check">✔</span> Perfil atualizado com bio clara e link de agendamento.</li>
-          <li><span class="check">✔</span> Marque e valorize o parceiro em publicações.</li>
-          <li><span class="check">✔</span> Responda mensagens em até 24h.</li>
+          <li><span class="check">✔</span> Bio clara e link de agendamento.</li>
+          <li><span class="check">✔</span> Marque o parceiro e responda em 24h.</li>
         </ul>
       </div>
     </div>
@@ -250,38 +211,35 @@
   <div class="container">
     <div class="section-title">
       <h2>Materiais Essenciais</h2>
-      <span class="kicker">Monte um kit enxuto e profissional</span>
+      <span class="kicker">Kit enxuto e profissional</span>
     </div>
     <div class="grid cols-3">
       <div class="card">
         <h3>Ferramentas</h3>
         <ul class="checklist">
-          <li><span class="check">✔</span> Alicates de cutícula e de corte (aço inox).</li>
-          <li><span class="check">✔</span> Espátulas/empurradores, pinças, tesourinhas.</li>
-          <li><span class="check">✔</span> Lixas e polidores (descartáveis), brocas e motor (se necessário).</li>
-          <li><span class="check">✔</span> Cabine LED/UV para gel, pincéis, dappen, removedores.</li>
+          <li><span class="check">✔</span> Alicates (aço inox), espátulas, pinças, tesouras.</li>
+          <li><span class="check">✔</span> Lixas descartáveis, polidores, brocas e motor.</li>
+          <li><span class="check">✔</span> Cabine LED/UV, pincéis, dappen, removedores.</li>
         </ul>
       </div>
       <div class="card">
         <h3>Produtos e EPIs</h3>
         <ul class="checklist">
-          <li><span class="check">✔</span> Esmaltes, bases, top coats, primer, óleo de cutícula.</li>
-          <li><span class="check">✔</span> Luvas, máscara PFF2/KN95 (lixamento), óculos de proteção.</li>
-          <li><span class="check">✔</span> Toalhas/papéis descartáveis, gaze, lenços sem fiapos.</li>
+          <li><span class="check">✔</span> Esmaltes, bases, top, primer, óleo de cutícula.</li>
+          <li><span class="check">✔</span> Luvas, máscara PFF2/KN95, óculos de proteção.</li>
+          <li><span class="check">✔</span> Toalhas/papéis descartáveis, gaze.</li>
         </ul>
       </div>
       <div class="card">
         <h3>Higiene e Esterilização</h3>
         <ul class="checklist">
-          <li><span class="check">✔</span> Detergente enzimático, escova de limpeza, álcool 70% para superfícies.</li>
-          <li><span class="check">✔</span> Autoclave e envelopes para esterilização; indicadores químicos.</li>
-          <li><span class="check">✔</span> Coletor de perfurocortantes e saco para resíduos contaminados.</li>
+          <li><span class="check">✔</span> Detergente enzimático, escova, álcool 70%.</li>
+          <li><span class="check">✔</span> Autoclave, envelopes e indicadores químicos.</li>
+          <li><span class="check">✔</span> Coletor de perfurocortantes e resíduos.</li>
         </ul>
       </div>
     </div>
-    <div class="tip" style="margin-top:12px">
-      Organização móvel: maleta com divisórias, etiquetas por etapa (limpo, usado, esterilizar) e uma <em>checklist</em> de reabastecimento semanal.
-    </div>
+    <div class="tip" style="margin-top:12px">Maleta com divisórias e etiquetas: <em>limpo</em>, <em>usado</em>, <em>esterilizar</em>.</div>
   </div>
 </section>
 
@@ -289,30 +247,30 @@
   <div class="container">
     <div class="section-title">
       <h2>Higiene, Segurança e Esterilização</h2>
-      <span class="kicker">Proteja você, seus clientes e seus parceiros</span>
+      <span class="kicker">Proteja todos, sempre</span>
     </div>
     <div class="grid cols-2">
       <div class="card">
-        <h3>Fluxo seguro em 6 etapas</h3>
+        <h3>Fluxo seguro (6 etapas)</h3>
         <ol class="steps" style="padding-left:0; list-style:none">
-          <li class="step"><div class="num">1</div><div><strong>Pré-limpeza</strong> — Remova resíduos visíveis logo após o uso.</div></li>
-          <li class="step"><div class="num">2</div><div><strong>Limpeza</strong> — Lave com detergente enzimático e escova; enxágue e seque bem.</div></li>
-          <li class="step"><div class="num">3</div><div><strong>Inspeção</strong> — Verifique integridade das peças e funcionamento.</div></li>
-          <li class="step"><div class="num">4</div><div><strong>Embalagem</strong> — Envelopes próprios com indicador químico.</div></li>
-          <li class="step"><div class="num">5</div><div><strong>Esterilização</strong> — Autoclave conforme instruções do fabricante. Guarde fechado e datado.</div></li>
-          <li class="step"><div class="num">6</div><div><strong>Descarte</strong> — Perfurocortantes em coletor rígido; lixas e itens descartáveis no lixo apropriado.</div></li>
+          <li class="step"><div class="num">1</div><div><strong>Pré-limpeza</strong> — retire resíduos após uso.</div></li>
+          <li class="step"><div class="num">2</div><div><strong>Lavagem</strong> — detergente enzimático; enxágue e seque.</div></li>
+          <li class="step"><div class="num">3</div><div><strong>Inspeção</strong> — integridade e funcionamento.</div></li>
+          <li class="step"><div class="num">4</div><div><strong>Embalagem</strong> — envelopes com indicador.</div></li>
+          <li class="step"><div class="num">5</div><div><strong>Esterilização</strong> — autoclave conforme fabricante.</div></li>
+          <li class="step"><div class="num">6</div><div><strong>Descarte</strong> — perfurocortantes no coletor rígido.</div></li>
         </ol>
       </div>
       <div class="card">
-        <h3>Boas práticas essenciais</h3>
+        <h3>Boas práticas</h3>
         <ul class="checklist">
-          <li><span class="check">✔</span> Higienize mãos antes/depois e troque luvas por cliente.</li>
-          <li><span class="check">✔</span> Superfícies: limpe com álcool 70% ou produto indicado entre atendimentos.</li>
-          <li><span class="check">✔</span> Evite procedimentos invasivos em pele lesionada. Identifique sinais de micoses e oriente a busca por avaliação médica.</li>
-          <li><span class="check">✔</span> Ventile o ambiente; utilize máscara com boa vedação ao lixar.</li>
-          <li><span class="check">✔</span> Registre lotes/validades e mantenha um caderno de controle da esterilização.</li>
+          <li><span class="check">✔</span> Higienize mãos; troque luvas por cliente.</li>
+          <li><span class="check">✔</span> Limpe superfícies entre atendimentos.</li>
+          <li><span class="check">✔</span> Evite pele lesionada; oriente avaliação médica.</li>
+          <li><span class="check">✔</span> Ventile o ambiente; use máscara ao lixar.</li>
+          <li><span class="check">✔</span> Registre lotes e controle de esterilização.</li>
         </ul>
-        <p class="subtle">Siga as exigências sanitárias locais e as instruções dos fabricantes dos produtos e equipamentos.</p>
+        <p class="small">Adequação às normas locais e instruções dos fabricantes é essencial.</p>
       </div>
     </div>
   </div>
@@ -321,28 +279,28 @@
 <section id="networking">
   <div class="container">
     <div class="section-title">
-      <h2>Networking e Busca de Parcerias</h2>
-      <span class="kicker">Do mapeamento ao fechamento com follow-up</span>
+      <h2>Networking e Parcerias</h2>
+      <span class="kicker">Do contato ao contrato</span>
     </div>
     <div class="grid cols-2">
       <div class="card">
         <h3>Mapa de oportunidades</h3>
         <ul class="checklist">
-          <li><span class="check">✔</span> Salões, barbearias, clínicas de estética, spas, academias, estúdios de pilates/yoga.</li>
-          <li><span class="check">✔</span> Coworkings, condomínios, empresas (RH), hotéis e eventos.</li>
-          <li><span class="check">✔</span> Influenciadoras locais, fotógrafos de noivas e assessorias de eventos.</li>
+          <li><span class="check">✔</span> Salões, barbearias, clínicas, spas, academias, pilates/yoga.</li>
+          <li><span class="check">✔</span> Coworkings, hotéis, condomínios, empresas (RH).</li>
+          <li><span class="check">✔</span> Influenciadoras, fotógrafos de noivas, assessorias.</li>
         </ul>
-        <div class="tip"><strong>Proposta de valor:</strong> leve conforto e aumento de ticket para o parceiro com comissão clara (ex.: 10%–20%) e indicadores simples (nº de atendimentos, avaliações).</div>
+        <div class="tip"><strong>Proposta de valor:</strong> aumento de ticket sem custo fixo + comissão clara e metas simples.</div>
       </div>
       <div class="card">
         <h3>Cadência e fechamento</h3>
         <ol class="steps" style="padding-left:0; list-style:none">
-          <li class="step"><div class="num">1</div><div>Contato inicial (DM/WhatsApp/ligação) com <span class="highlight">benefício em 1 frase</span>.</div></li>
-          <li class="step"><div class="num">2</div><div>Reunião rápida (15 min) para entender o público e propor piloto de 30 dias.</div></li>
-          <li class="step"><div class="num">3</div><div>Teste com metas e campanha conjunta (stories, cartaz, QR Code).</div></li>
-          <li class="step"><div class="num">4</div><div>Relatório e proposta final com ajustes; contrato simples com comissão.</div></li>
+          <li class="step"><div class="num">1</div><div>Contato com benefício em 1 frase.</div></li>
+          <li class="step"><div class="num">2</div><div>Reunião de 15 min e piloto de 30 dias.</div></li>
+          <li class="step"><div class="num">3</div><div>Campanha conjunta (stories/cartaz/QR).</div></li>
+          <li class="step"><div class="num">4</div><div>Relatório e contrato simples.</div></li>
         </ol>
-        <div class="tip">Regra de ouro: cada contato recebe 3 follow-ups espaçados (D+2, D+7, D+14). Depois, arquive e revisite em 60 dias.</div>
+        <div class="tip">3 follow-ups: D+2, D+7, D+14. Depois, arquive e revisite em 60 dias.</div>
       </div>
     </div>
   </div>
@@ -351,8 +309,8 @@
 <section id="radar">
   <div class="container">
     <div class="section-title">
-      <h2>Radar de Parceiros na Sua Região</h2>
-      <span class="kicker">Gere buscas prontas no Google e Instagram</span>
+      <h2>Radar de Parceiros</h2>
+      <span class="kicker">Buscas prontas no Google e Instagram</span>
     </div>
     <div class="card">
       <div class="grid cols-3">
@@ -380,7 +338,7 @@
         </div>
       </div>
       <div id="links-busca" style="margin-top:12px" class="toolbar"></div>
-      <p class="subtle">Dica: salve resultados promissores no Mini CRM abaixo. Visite o local em horários de menor movimento.</p>
+      <p class="small">Salve resultados promissores no Mini CRM abaixo.</p>
     </div>
   </div>
 </section>
@@ -388,38 +346,20 @@
 <section id="ferramentas">
   <div class="container">
     <div class="section-title">
-      <h2>Ferramentas para Prospecção</h2>
-      <span class="kicker">Micro-SaaS: tudo o que você precisa em um lugar</span>
+      <h2>Ferramentas</h2>
+      <span class="kicker">Pitch, mensagens, cálculo e organização</span>
     </div>
 
     <div class="grid cols-2">
       <div class="card">
         <h3>Gerador de Pitch/Proposta</h3>
         <div class="grid cols-2">
-          <div>
-            <label class="label">Seu nome</label>
-            <input id="p_nome" placeholder="Seu nome" />
-          </div>
-          <div>
-            <label class="label">Especialidade</label>
-            <input id="p_esp" placeholder="Ex.: alongamento em gel" />
-          </div>
-          <div>
-            <label class="label">Benefício principal</label>
-            <input id="p_benef" placeholder="Ex.: aumento de ticket sem custo fixo" />
-          </div>
-          <div>
-            <label class="label">Comissão sugerida (%)</label>
-            <input id="p_comissao" type="number" min="0" max="50" step="1" placeholder="15" />
-          </div>
-          <div>
-            <label class="label">Cidade/Bairro</label>
-            <input id="p_cidade" placeholder="Bairro/Cidade" />
-          </div>
-          <div>
-            <label class="label">Duração do piloto (dias)</label>
-            <input id="p_piloto" type="number" min="7" max="60" step="1" value="30" />
-          </div>
+          <div><label class="label">Seu nome</label><input id="p_nome" placeholder="Seu nome" /></div>
+          <div><label class="label">Especialidade</label><input id="p_esp" placeholder="Ex.: alongamento em gel" /></div>
+          <div><label class="label">Benefício</label><input id="p_benef" placeholder="Ex.: aumento de ticket sem custo fixo" /></div>
+          <div><label class="label">Comissão (%)</label><input id="p_comissao" type="number" min="0" max="50" step="1" placeholder="15" /></div>
+          <div><label class="label">Cidade/Bairro</label><input id="p_cidade" placeholder="Bairro/Cidade" /></div>
+          <div><label class="label">Piloto (dias)</label><input id="p_piloto" type="number" min="7" max="60" step="1" value="30" /></div>
         </div>
         <div class="toolbar" style="margin-top:10px">
           <button class="btn btn-primary" onclick="gerarPitch()">Gerar pitch</button>
@@ -432,26 +372,11 @@
       <div class="card">
         <h3>Mensagem para WhatsApp/Email</h3>
         <div class="grid cols-2">
-          <div>
-            <label class="label">Seu nome</label>
-            <input id="m_nome" placeholder="Seu nome" />
-          </div>
-          <div>
-            <label class="label">Tipo de parceiro</label>
-            <input id="m_tipo" placeholder="Ex.: academia, salão" />
-          </div>
-          <div>
-            <label class="label">Benefício direto</label>
-            <input id="m_benef" placeholder="Ex.: comissões e novos clientes" />
-          </div>
-          <div>
-            <label class="label">Telefone WhatsApp (opcional)</label>
-            <input id="m_fone" placeholder="DDD+Número, só dígitos" />
-          </div>
-          <div class="cols-2" style="grid-column:1/-1">
-            <label class="label">Cidade/Bairro</label>
-            <input id="m_cidade" placeholder="Bairro/Cidade" />
-          </div>
+          <div><label class="label">Seu nome</label><input id="m_nome" placeholder="Seu nome" /></div>
+          <div><label class="label">Tipo de parceiro</label><input id="m_tipo" placeholder="Ex.: academia, salão" /></div>
+          <div><label class="label">Benefício direto</label><input id="m_benef" placeholder="Ex.: comissões e novos clientes" /></div>
+          <div><label class="label">Telefone WhatsApp (opcional)</label><input id="m_fone" placeholder="DDD+Número, só dígitos" /></div>
+          <div class="cols-2" style="grid-column:1/-1"><label class="label">Cidade/Bairro</label><input id="m_cidade" placeholder="Bairro/Cidade" /></div>
         </div>
         <div class="toolbar" style="margin-top:10px">
           <button class="btn btn-primary" onclick="gerarMsg()">Gerar mensagem</button>
@@ -464,124 +389,53 @@
       <div class="card">
         <h3>Calculadora de Comissão</h3>
         <div class="grid cols-3">
-          <div>
-            <label class="label">Ticket médio (R$)</label>
-            <input id="c_ticket" type="number" min="0" step="1" value="90" />
-          </div>
-          <div>
-            <label class="label">Atendimentos/mês</label>
-            <input id="c_qtd" type="number" min="0" step="1" value="40" />
-          </div>
-          <div>
-            <label class="label">Comissão ao parceiro (%)</label>
-            <input id="c_taxa" type="number" min="0" max="50" step="1" value="15" />
-          </div>
+          <div><label class="label">Ticket médio (R$)</label><input id="c_ticket" type="number" min="0" step="1" value="90" /></div>
+          <div><label class="label">Atendimentos/mês</label><input id="c_qtd" type="number" min="0" step="1" value="40" /></div>
+          <div><label class="label">Comissão (%)</label><input id="c_taxa" type="number" min="0" max="50" step="1" value="15" /></div>
         </div>
-        <div class="toolbar" style="margin-top:10px">
-          <button class="btn btn-primary" onclick="calcularComissao()">Calcular</button>
-        </div>
+        <div class="toolbar" style="margin-top:10px"><button class="btn btn-primary" onclick="calcularComissao()">Calcular</button></div>
         <div id="c_out" class="tip" style="margin-top:10px"></div>
       </div>
 
       <div class="card">
         <h3>Checklist de Prontidão</h3>
         <ul id="chklist" class="checklist">
-          <li><input type="checkbox" data-key="portfolio"> Portfólio com 12 fotos recentes e 3 depoimentos</li>
-          <li><input type="checkbox" data-key="politicas"> Políticas de agendamento e cancelamento publicadas</li>
-          <li><input type="checkbox" data-key="kits"> Kits esterilizados separados por cliente/serviço</li>
-          <li><input type="checkbox" data-key="pitch"> Pitch e oferta de comissão definidos</li>
+          <li><input type="checkbox" data-key="portfolio"> Portfólio com 12 fotos e 3 depoimentos</li>
+          <li><input type="checkbox" data-key="politicas"> Políticas de agendamento publicadas</li>
+          <li><input type="checkbox" data-key="kits"> Kits esterilizados por cliente</li>
+          <li><input type="checkbox" data-key="pitch"> Pitch e comissão definidos</li>
           <li><input type="checkbox" data-key="scripts"> Scripts prontos (DM, ligação, e-mail)</li>
         </ul>
-        <div class="toolbar">
-          <button class="btn btn-ghost" onclick="resetChecklist()">Zerar checklist</button>
-        </div>
+        <div class="toolbar"><button class="btn btn-ghost" onclick="resetChecklist()">Zerar checklist</button></div>
       </div>
     </div>
 
     <div class="card" style="margin-top:18px">
       <h3>Mini CRM de Parceiros</h3>
       <div class="grid cols-3">
-        <div>
-          <label class="label">Nome</label>
-          <input id="crm_nome" placeholder="Ex.: Academia FormaFit" />
-        </div>
-        <div>
-          <label class="label">Tipo</label>
-          <input id="crm_tipo" placeholder="Ex.: academia, salão" />
-        </div>
-        <div>
-          <label class="label">Contato (tel/email)</label>
-          <input id="crm_contato" placeholder="Ex.: (11) 99999-0000" />
-        </div>
-        <div>
-          <label class="label">Canal</label>
-          <select id="crm_canal">
-            <option>WhatsApp</option>
-            <option>Instagram</option>
-            <option>Ligação</option>
-            <option>E-mail</option>
-            <option>Visita</option>
-            <option>Indicação</option>
-          </select>
-        </div>
-        <div>
-          <label class="label">Status</label>
-          <select id="crm_status">
-            <option>Novo</option>
-            <option>Contatado</option>
-            <option>Reunião</option>
-            <option>Em teste</option>
-            <option>Ativo</option>
-            <option>Perdido</option>
-          </select>
-        </div>
-        <div>
-          <label class="label">Próximo passo</label>
-          <input id="crm_prox" placeholder="Ex.: enviar proposta" />
-        </div>
-        <div class="cols-2" style="grid-column:1/-1">
-          <label class="label">Observações</label>
-          <input id="crm_obs" placeholder="Ex.: prefere 4ª feira" />
-        </div>
-        <div style="align-self:end">
-          <button class="btn btn-primary" onclick="adicionarLead()">Adicionar</button>
-        </div>
+        <div><label class="label">Nome</label><input id="crm_nome" placeholder="Ex.: Academia FormaFit" /></div>
+        <div><label class="label">Tipo</label><input id="crm_tipo" placeholder="Ex.: academia, salão" /></div>
+        <div><label class="label">Contato</label><input id="crm_contato" placeholder="Ex.: (11) 99999-0000" /></div>
+        <div><label class="label">Canal</label><select id="crm_canal"><option>WhatsApp</option><option>Instagram</option><option>Ligação</option><option>E-mail</option><option>Visita</option><option>Indicação</option></select></div>
+        <div><label class="label">Status</label><select id="crm_status"><option>Novo</option><option>Contatado</option><option>Reunião</option><option>Em teste</option><option>Ativo</option><option>Perdido</option></select></div>
+        <div><label class="label">Próximo passo</label><input id="crm_prox" placeholder="Ex.: enviar proposta" /></div>
+        <div class="cols-2" style="grid-column:1/-1"><label class="label">Observações</label><input id="crm_obs" placeholder="Ex.: prefere 4ª feira" /></div>
+        <div style="align-self:end"><button class="btn btn-primary" onclick="adicionarLead()">Adicionar</button></div>
         <div style="align-self:end" class="toolbar">
           <button class="btn btn-ghost" onclick="exportarCRM()">Exportar</button>
-          <label class="btn btn-ghost" style="cursor:pointer">
-            Importar <input type="file" id="crm_import" accept="application/json" style="display:none" />
-          </label>
+          <label class="btn btn-ghost" style="cursor:pointer">Importar <input type="file" id="crm_import" accept="application/json" style="display:none" /></label>
           <button class="btn btn-ghost" onclick="limparCRM()">Limpar</button>
         </div>
       </div>
 
       <div class="grid cols-3" style="margin-top:10px">
-        <div>
-          <label class="label">Filtro status</label>
-          <select id="flt_status" onchange="renderCRM()">
-            <option value="">Todos</option>
-            <option>Novo</option>
-            <option>Contatado</option>
-            <option>Reunião</option>
-            <option>Em teste</option>
-            <option>Ativo</option>
-            <option>Perdido</option>
-          </select>
-        </div>
-        <div>
-          <label class="label">Filtro tipo</label>
-          <input id="flt_tipo" placeholder="Ex.: academia" oninput="renderCRM()" />
-        </div>
-        <div>
-          <label class="label">Busca</label>
-          <input id="flt_q" placeholder="Nome/obs" oninput="renderCRM()" />
-        </div>
+        <div><label class="label">Filtro status</label><select id="flt_status" onchange="renderCRM()"><option value="">Todos</option><option>Novo</option><option>Contatado</option><option>Reunião</option><option>Em teste</option><option>Ativo</option><option>Perdido</option></select></div>
+        <div><label class="label">Filtro tipo</label><input id="flt_tipo" placeholder="Ex.: academia" oninput="renderCRM()" /></div>
+        <div><label class="label">Busca</label><input id="flt_q" placeholder="Nome/obs" oninput="renderCRM()" /></div>
       </div>
 
-      <div style="overflow:auto; margin-top:10px">
-        <table class="table" id="crm_tabela" aria-label="Tabela de parceiros"></table>
-      </div>
-      <p class="subtle">Dica: Atualize o status sempre após cada contato. Consistência fecha parcerias.</p>
+      <div style="overflow:auto; margin-top:10px"><table class="table" id="crm_tabela" aria-label="Tabela de parceiros"></table></div>
+      <p class="small">Atualize o status após cada contato. Consistência fecha parcerias.</p>
     </div>
   </div>
 </section>
@@ -589,24 +443,63 @@
 <section id="exemplos">
   <div class="container">
     <div class="section-title">
-      <h2>Exemplos e Kits de Abordagem</h2>
-      <span class="kicker">Use, adapte e conquiste</span>
+      <h2>Exemplos de Abordagem</h2>
+      <span class="kicker">Use e adapte</span>
     </div>
     <div class="grid cols-3">
-      <div class="card">
-        <h3>DM (Instagram)</h3>
-        <div class="code">Olá, [nome do espaço]! Sou a [seu nome], manicure especializada em [especialidade] no [bairro]. Tenho uma proposta simples: levar mais conforto para seus clientes e aumentar o ticket do espaço, com comissão de [x%] e piloto de 30 dias. Podemos falar 15 min esta semana?</div>
+      <div class="card"><h3>DM (Instagram)</h3><div class="code">Olá, [nome do espaço]! Sou a [seu nome], manicure especializada em [especialidade] no [bairro]. Proponho um piloto de 30 dias com comissão de [x%] para aumentar o ticket e encantar clientes. Podemos falar 15 min esta semana?</div></div>
+      <div class="card"><h3>Ligação</h3><div class="code">Alô, tudo bem? Falo com quem cuida de parcerias? Sou [seu nome], manicure. Ofereço serviço de unhas no espaço de vocês sem custo fixo e com comissão. Posso enviar um resumo por WhatsApp e agendar 15 min?</div></div>
+      <div class="card"><h3>E-mail</h3><div class="code">Assunto: Parceria de manicure que aumenta o ticket do [nome]<br><br>Oi, [nome], tudo bem? Atendo [público] com [serviço]. Proponho um piloto de [30] dias com divulgação conjunta e comissão de [x%]. Envio portfólio e proposta em 1 página. Podemos alinhar em 15 min?</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="apoie">
+  <div class="container">
+    <div class="section-title">
+      <h2>Apoie o Projeto e Indicações</h2>
+      <span class="kicker">Seu apoio mantém o site no ar</span>
+    </div>
+
+    <div class="grid cols-2">
+      <div class="aff-card">
+        <div class="aff-hero">🎓</div>
+        <div class="aff-flag">Afiliado • Conteúdo recomendado</div>
+        <h3>Formação e técnicas para elevar seu atendimento</h3>
+        <p class="muted">Aprenda com especialistas e acelere sua evolução. Comprando pelo link, você apoia este projeto.</p>
+        <a class="cta-aff" href="https://go.hotmart.com/F101670321U" target="_blank" rel="noopener sponsored nofollow">Quero conhecer agora ↗</a>
+        <p class="small">Transparência: link de afiliado. Sem custo extra para você.</p>
       </div>
-      <div class="card">
-        <h3>Ligação</h3>
-        <div class="code">Alô, tudo bem? Falo com quem cuida de parcerias? Sou [seu nome], manicure. Ajudo espaços como o de vocês a oferecer serviço de unhas sem custo fixo e com comissão. Posso enviar um resumo por WhatsApp e agendar 15 min ainda esta semana?</div>
-      </div>
-      <div class="card">
-        <h3>E-mail</h3>
-        <div class="code">Assunto: Parceria de manicure que aumenta o ticket do [nome do espaço]<br><br>Oi, [nome], tudo bem? Atendo [público] com [serviço]. Proponho um piloto de [30] dias com divulgação conjunta e comissão de [x%]. Envio portfólio e proposta em 1 página. Podemos alinhar em 15 min?</div>
+
+      <div class="aff-card">
+        <div class="aff-hero">📦</div>
+        <div class="aff-flag">Afiliado • Ferramentas úteis</div>
+        <h3>Materiais, templates e atalhos para vender mais</h3>
+        <p class="muted">Otimize tempo e divulgação com recursos prontos. Sua compra ajuda a manter esta página no ar.</p>
+        <a class="cta-aff" href="https://go.hotmart.com/S101670391G" target="_blank" rel="noopener sponsored nofollow">Ver recursos recomendados ↗</a>
+        <p class="small">Obrigado por apoiar o projeto através das indicações.</p>
       </div>
     </div>
-    <div class="tip" style="margin-top:12px">Oferta-piloto imbatível: 1º mês com agenda especial para clientes do parceiro, material de divulgação pronto (stories/cartaz) e relatório de atendimentos + avaliações.</div>
+
+    <div class="card" style="margin-top:16px">
+      <div class="grid cols-2">
+        <div>
+          <h3>Doe e fortaleça a comunidade</h3>
+          <p class="muted">Se esta ferramenta te ajuda, considere uma doação. Cada contribuição ajuda a manter servidores, melhorias e conteúdo gratuito para manicures.</p>
+          <div class="donate-badges">
+            <button class="donate-badge" onclick="openDonate()">Doar via PIX 💖</button>
+            <button class="donate-badge" onclick="openDonate()">Configurar meus dados de doação ⚙️</button>
+          </div>
+          <p class="small">Preferiu comprar pelas indicações? Obrigado! Isso já mantém o projeto vivo.</p>
+        </div>
+        <div>
+          <div class="tip">
+            Dica: compartilhe este site com colegas. Quanto mais gente usando, mais recursos teremos para evoluir as ferramentas.
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -619,19 +512,19 @@
     <div class="grid cols-2">
       <div class="card">
         <h3>Qual comissão sugerir?</h3>
-        <p class="muted">Geralmente entre 10% e 20% do serviço. Ajuste conforme estrutura oferecida (espaço, divulgação, agenda, recepção).</p>
+        <p class="muted">Entre 10% e 20%, ajustando ao que o parceiro oferece (espaço, divulgação, recepção).</p>
       </div>
       <div class="card">
         <h3>Como medir resultado?</h3>
-        <p class="muted">Atendimentos, faturamento, taxa de retorno, avaliações e presença digital (menções e cliques no link de agendamento).</p>
+        <p class="muted">Atendimentos, faturamento, taxa de retorno, avaliações e menções em redes.</p>
       </div>
       <div class="card">
         <h3>Preciso de contrato?</h3>
-        <p class="muted">Um acordo simples com resumo da oferta, comissões, responsabilidades, duração do piloto e regras de rescisão evita ruídos.</p>
+        <p class="muted">Um acordo simples com comissões, responsabilidades, duração do piloto e rescisão evita ruídos.</p>
       </div>
       <div class="card">
         <h3>E a biossegurança?</h3>
-        <p class="muted">Siga normas locais e as boas práticas deste guia. Documente seus processos e mantenha registros de esterilização.</p>
+        <p class="muted">Siga normas locais e as boas práticas deste guia; documente a esterilização.</p>
       </div>
     </div>
   </div>
@@ -639,7 +532,8 @@
 
 <div class="sticky-cta">
   <a href="#radar" class="btn btn-primary">Prospectar agora</a>
-  <a href="#ferramentas" class="btn btn-ghost">Abrir ferramentas</a>
+  <button class="btn btn-ghost" onclick="openDonate()">Apoiar 💖</button>
+  <a href="#apoie" class="btn btn-ghost">Indicações ⭐</a>
 </div>
 
 <footer class="footer">
@@ -647,14 +541,53 @@
     <div class="grid cols-2">
       <div>
         <div class="brand"><div class="logo">💅</div> Parcerias de Sucesso</div>
-        <p class="small">Feito para manicures que querem crescer com ética, qualidade e parcerias duradouras.</p>
+        <p class="small">Para manicures que querem crescer com ética, qualidade e parcerias duradouras.</p>
       </div>
       <div>
-        <p class="small">Boas práticas de higiene são obrigatórias. Adeque-se à legislação sanitária da sua cidade e às instruções dos fabricantes.</p>
+        <p class="small">Links de afiliado: sua compra ajuda a manter o site no ar. Obrigado pelo apoio!</p>
       </div>
     </div>
   </div>
 </footer>
+
+<!-- Modal de Doação -->
+<div id="donateModal" class="modal" aria-hidden="true" role="dialog" aria-label="Apoie o Projeto">
+  <div class="box">
+    <div class="toolbar" style="justify-content:space-between">
+      <h3>Apoiar o Projeto</h3>
+      <button class="close-x" onclick="closeDonate()">Fechar</button>
+    </div>
+    <div class="grid cols-2">
+      <div>
+        <p class="muted">Doe via PIX. Insira sua chave (se você é a dona do site) ou copie a chave já configurada.</p>
+        <label class="label">Chave PIX do projeto</label>
+        <div class="toolbar">
+          <input id="pix_key" placeholder="exemplo@pix.com" />
+          <button class="btn btn-ghost" onclick="savePix()">Salvar</button>
+          <button class="btn btn-primary" onclick="copyPix()">Copiar chave</button>
+        </div>
+
+        <div style="margin-top:10px">
+          <label class="label">Link de doação online (opcional)</label>
+          <div class="toolbar">
+            <input id="donate_link" placeholder="Ex.: seu link de pagamento" />
+            <button class="btn btn-ghost" onclick="saveDonateLink()">Salvar</button>
+            <a id="open_donate_link" class="btn btn-primary" target="_blank" rel="noopener">Abrir link</a>
+          </div>
+          <p class="small">Sem custo extra para quem compra via indicações; isso também nos apoia.</p>
+        </div>
+      </div>
+      <div>
+        <label class="label">QR da chave PIX (para conferir)</label>
+        <div class="qr"><img id="qr_img" alt="QR PIX" /></div>
+        <div class="donate-badges" style="margin-top:10px">
+          <span class="donate-badge">Sugestões: R$ 10 • R$ 20 • R$ 50</span>
+        </div>
+        <p class="small">Após doar, compartilhe este site com uma colega. Você ajuda duas vezes!</p>
+      </div>
+    </div>
+  </div>
+</div>
 
 <script>
   // Utilidades
@@ -662,9 +595,7 @@
   function copiar(id){
     const el = $(id);
     if(!el || !el.textContent) return;
-    navigator.clipboard.writeText(el.textContent).then(()=> {
-      alert('Copiado!');
-    });
+    navigator.clipboard.writeText(el.textContent).then(()=> alert('Copiado!'));
   }
   function baixarArquivo(id, nome){
     const el = $(id);
@@ -688,15 +619,14 @@
     const links = [
       {t:'Google Maps', url:`https://www.google.com/maps/search/${q1}`},
       {t:'Google Busca', url:`https://www.google.com/search?q=${q3}`},
-      {t:'Instagram', url:`https://www.instagram.com/explore/tags/${encodeURIComponent(tipo.replace(/\s+/g,''))}/`},
-      {t:'Instagram busca', url:`https://www.instagram.com/search?q=${q2}`},
+      {t:'Instagram (tags)', url:`https://www.instagram.com/explore/tags/${encodeURIComponent(tipo.replace(/\s+/g,''))}/`},
+      {t:'Instagram (busca)', url:`https://www.instagram.com/search?q=${q2}`},
       {t:'LinkedIn empresas', url:`https://www.linkedin.com/search/results/companies/?keywords=${q1}`},
     ];
     links.forEach(l=>{
       const a = document.createElement('a');
       a.href = l.url; a.target = '_blank'; a.rel='noopener';
-      a.className = 'badge-mini';
-      a.textContent = l.t + ' ↗';
+      a.className = 'badge-mini'; a.textContent = l.t + ' ↗';
       box.appendChild(a);
     });
   }
@@ -714,19 +644,19 @@
 Olá, sou ${nome}, ${esp}. Atendo em ${cidade} com foco em qualidade, segurança e experiência do cliente.
 
 Proposta:
-• Levo atendimento de unhas ao seu espaço sem custo fixo.
+• Atendimento de unhas no seu espaço sem custo fixo.
 • Benefício direto: ${benef}.
 • Comissão sugerida: ${comi}% por atendimento.
-• Piloto de ${piloto} dias com metas simples e relatório de resultados.
-• Materiais esterilizados, EPIs e processos de biossegurança padronizados.
+• Piloto de ${piloto} dias com metas simples e relatório.
+• Materiais esterilizados, EPIs e processos padronizados.
 
-Como medimos:
-• Nº de atendimentos, ticket médio e avaliações dos clientes.
+Métricas:
+• Atendimentos, ticket médio e avaliações.
 
 Próximos passos:
 1) Reunião de 15 min para alinharmos público e agenda.
 2) Início do piloto com divulgação conjunta (stories/cartaz/QR).
-3) Ajustes e formalização da parceria.
+3) Ajustes e formalização.
 
 Quando podemos conversar?`;
     $('pitch_out').textContent = texto;
@@ -738,7 +668,7 @@ Quando podemos conversar?`;
     const tipo = $('m_tipo').value.trim() || 'seu espaço';
     const benef = $('m_benef').value.trim() || 'comissão e mais conforto pros clientes';
     const cidade = $('m_cidade').value.trim() || 'sua região';
-    const fone = $('m_fone').value.replace(/\D/g,'');
+    const fone = ($('m_fone').value || '').replace(/\D/g,'');
     const msg = `Olá! Sou ${n}, manicure no ${cidade}. Tenho uma proposta rápida para ${tipo}: levar atendimento de unhas sem custo fixo, com ${benef}, começando com um piloto de 30 dias e metas simples. Topa um papo de 15 min esta semana?`;
     $('msg_out').textContent = msg;
     const wurl = `https://wa.me/${fone || ''}?text=${encodeURIComponent(msg)}`;
@@ -758,7 +688,7 @@ Quando podemos conversar?`;
       Faturamento estimado: <strong>R$ ${moeda(faturamento)}</strong><br>
       Comissão do parceiro (${(taxa*100).toFixed(0)}%): <strong>R$ ${moeda(comissao)}</strong><br>
       Receita da manicure: <strong>R$ ${moeda(manicure)}</strong><br>
-      <span class="subtle">Dica: negocie % por faixa de volume e revisão após o piloto.</span>
+      <span class="small">Dica: negocie % por faixa de volume e revisão após o piloto.</span>
     `;
   }
 
@@ -774,19 +704,14 @@ Quando podemos conversar?`;
   }
   function resetChecklist(){
     const itens = chk.querySelectorAll('input[type="checkbox"]');
-    itens.forEach(i=>{
-      i.checked=false;
-      localStorage.removeItem('chk_'+i.dataset.key);
-    });
+    itens.forEach(i=>{ i.checked=false; localStorage.removeItem('chk_'+i.dataset.key); });
   }
 
   // Mini CRM com localStorage
   let leads = [];
   function salvarCRM(){ localStorage.setItem('crm_leads', JSON.stringify(leads)); }
   function carregarCRM(){
-    try{
-      leads = JSON.parse(localStorage.getItem('crm_leads')||'[]');
-    }catch(e){ leads = []; }
+    try{ leads = JSON.parse(localStorage.getItem('crm_leads')||'[]'); }catch(e){ leads = []; }
     renderCRM();
   }
   function adicionarLead(){
@@ -877,7 +802,7 @@ Quando podemos conversar?`;
     if(!confirm('Limpar todos os registros do CRM?')) return;
     leads=[]; salvarCRM(); renderCRM();
   }
-  $('crm_import').addEventListener('change', (e)=>{
+  $('crm_import')?.addEventListener('change', (e)=>{
     const file = e.target.files[0]; if(!file) return;
     const fr = new FileReader();
     fr.onload = ()=> {
@@ -888,12 +813,53 @@ Quando podemos conversar?`;
     e.target.value='';
   });
 
-  // Inicialização
-  loadChecklist();
-  carregarCRM();
-  // Auto-gera placeholders iniciais
-  gerarPitch(); gerarMsg(); calcularComissao();
+  // Modal de Doação (PIX e link)
+  function openDonate(){
+    const m = $('donateModal');
+    m.classList.add('active');
+    loadDonate();
+  }
+  function closeDonate(){ $('donateModal').classList.remove('active'); }
+  function savePix(){
+    const k = $('pix_key').value.trim();
+    if(!k){ alert('Informe a chave PIX.'); return; }
+    localStorage.setItem('donate_pix', k);
+    updateQR(k);
+    alert('Chave PIX salva.');
+  }
+  function copyPix(){
+    const k = $('pix_key').value.trim();
+    if(!k){ alert('Nenhuma chave informada.'); return; }
+    navigator.clipboard.writeText(k).then(()=> alert('Chave PIX copiada!'));
+  }
+  function saveDonateLink(){
+    const l = $('donate_link').value.trim();
+    localStorage.setItem('donate_link', l);
+    $('open_donate_link').href = l || '#';
+    alert('Link de doação salvo.');
+  }
+  function loadDonate(){
+    const k = localStorage.getItem('donate_pix') || 'exemplo@pix.com';
+    $('pix_key').value = k;
+    updateQR(k);
+    const l = localStorage.getItem('donate_link') || '';
+    $('donate_link').value = l;
+    $('open_donate_link').href = l || '#';
+  }
+  function updateQR(k){
+    const data = encodeURIComponent(k);
+    $('qr_img').src = `https://api.qrserver.com/v1/create-qr-code/?size=140x140&data=${data}`;
+  }
+  // Fechar modal clicando fora
+  $('donateModal').addEventListener('click', (e)=>{ if(e.target.id==='donateModal') closeDonate(); });
 
+  // Inicialização
+  function init(){
+    loadChecklist();
+    carregarCRM();
+    gerarPitch(); gerarMsg(); calcularComissao();
+  }
+  init();
 </script>
 </body>
 </html>
